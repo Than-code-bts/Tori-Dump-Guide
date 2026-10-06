@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         BASIC PAGE INFORMATION
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Tori Dump interactive user guide">
+
+    <meta name="author"
+          content="Tori Network">
+
+    <title>
+        Tori Dump | How to Use
+    </title>
+
+
+    <!-- =========================================
+         BOOTSTRAP 4
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    >
+
+
+    <!-- =========================================
+         FONT AWESOME
+         Used for simple interface icons
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    >
+
+
+    <!-- =========================================
+         GOOGLE FONT
+    ========================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================
+         TORI STYLES
+    ========================================== -->
+
+    <style>
+
+        /* -----------------------------------------
+           COLOR SYSTEM
+        ----------------------------------------- */
+
+        :root {
+
+            --tori-red: #d9232e;
+            --tori-red-dark: #b91c26;
+            --tori-red-light: #fff1f2;
+
+            --tori-black: #171717;
+            --tori-dark: #262626;
+
+            --tori-gray-900: #333333;
+            --tori-gray-700: #555555;
+            --tori-gray-500: #737373;
+            --tori-gray-300: #d4d4d4;
+            --tori-gray-200: #e5e5e5;
+            --tori-gray-100: #f5f5f5;
+
+            --tori-white: #ffffff;
+
+        }
+
+
+        /* -----------------------------------------
+           GLOBAL
+        ----------------------------------------- */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                "Inter",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            color: var(--tori-gray-900);
+
+            background:
+                var(--tori-white);
+
+            line-height: 1.7;
+
+        }
+
+
+        a {
+            color: var(--tori-red);
+        }
+
+
+        a:hover {
+            color: var(--tori-red-dark);
+        }
+
+
+        /* -----------------------------------------
+           ACCESSIBILITY
+        ----------------------------------------- */
+
+        :focus-visible {
+
+            outline:
+                3px solid
+                rgba(217, 35, 46, 0.35);
+
+            outline-offset: 3px;
+
+        }
+
+
+        /* -----------------------------------------
+           NAVIGATION
+        ----------------------------------------- */
+
+        .tori-navbar {
+
+            background:
+                var(--tori-white);
+
+            border-bottom:
+                1px solid
+                var(--tori-gray-200);
+
+            padding:
+                14px 0;
+
+        }
+
+
+        .tori-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            font-size: 1.15rem;
+
+            font-weight: 800;
+
+            letter-spacing: -0.02em;
+
+            color:
+                var(--tori-black) !important;
+
+        }
+
+
+        .tori-brand-mark {
+
+            width: 34px;
+
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-right: 10px;
+
+            border-radius: 8px;
+
+            background:
+                var(--tori-red);
+
+            color:
+                var(--tori-white);
+
+            font-weight: 800;
+
+            font-size: 0.95rem;
+
+        }
+
+
+        .tori-brand span {
+            color:
+                var(--tori-red);
+        }
+
+
+        .navbar-nav .nav-link {
+
+            color:
+                var(--tori-gray-700) !important;
+
+            font-size: 0.9rem;
+
+            font-weight: 500;
+
+            margin-left: 10px;
+
+        }
+
+
+        .navbar-nav .nav-link:hover {
+
+            color:
+                var(--tori-red) !important;
+
+        }
+
+
+        /* -----------------------------------------
+           LANGUAGE SWITCHER
+        ----------------------------------------- */
+
+        .language-switcher {
+
+            display: flex;
+
+            align-items: center;
+
+            margin-left: 18px;
+
+        }
+
+
+        .language-btn {
+
+            border:
+                1px solid
+                var(--tori-gray-200);
+
+            background:
+                var(--tori-white);
+
+            color:
+                var(--tori-gray-700);
+
+            padding:
+                5px 10px;
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .language-btn:first-child {
+
+            border-radius:
+                6px 0 0 6px;
+
+        }
+
+
+        .language-btn:last-child {
+
+            border-radius:
+                0 6px 6px 0;
+
+            border-left:
+                none;
+
+        }
+
+
+        .language-btn.active {
+
+            background:
+                var(--tori-red);
+
+            color:
+                var(--tori-white);
+
+            border-color:
+                var(--tori-red);
+
+        }
+
+
+        /* -----------------------------------------
+           HERO
+        ----------------------------------------- */
+
+        .hero {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            padding:
+                92px 0 82px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f7 0%,
+                    #ffffff 55%,
+                    #fffafa 100%
+                );
+
+            border-bottom:
+                1px solid
+                var(--tori-gray-200);
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 320px;
+
+            height: 320px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(217, 35, 46, 0.05);
+
+            top: -140px;
+
+            right: -80px;
+
+        }
+
+
+        .hero-content {
+
+            position:
+                relative;
+
+            z-index: 2;
+
+            text-align:
+                center;
+
+        }
+
+
+        .hero-label {
+
+            display:
+                inline-block;
+
+            margin-bottom:
+                18px;
+
+            padding:
+                6px 13px;
+
+            border-radius:
+                50px;
+
+            background:
+                var(--tori-red-light);
+
+            color:
+                var(--tori-red);
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.04em;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .hero h1 {
+
+            margin-bottom:
+                18px;
+
+            color:
+                var(--tori-black);
+
+            font-size:
+                clamp(2.2rem, 5vw, 3.7rem);
+
+            line-height:
+                1.12;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                -0.045em;
+
+        }
+
+
+        .hero h1 .highlight {
+
+            color:
+                var(--tori-red);
+
+        }
+
+
+        .hero-description {
+
+            max-width:
+                720px;
+
+            margin:
+                0 auto 34px;
+
+            color:
+                var(--tori-gray-500);
+
+            font-size:
+                1.05rem;
+
+        }
+
+
+        /* -----------------------------------------
+           ASK TORI SEARCH BOX
+        ----------------------------------------- */
+
+        .ask-tori {
+
+            max-width:
+                780px;
+
+            margin:
+                0 auto;
+
+        }
+
+
+        .search-wrapper {
+
+            display:
+                flex;
+
+            align-items:
+                stretch;
+
+            padding:
+                7px;
+
+            background:
+                var(--tori-white);
+
+            border:
+                1px solid
+                var(--tori-gray-300);
+
+            border-radius:
+                12px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(0, 0, 0, 0.08);
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .search-wrapper:focus-within {
+
+            border-color:
+                var(--tori-red);
+
+            box-shadow:
+                0 12px 40px
+                rgba(217, 35, 46, 0.12);
+
+        }
+
+
+        .search-icon {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            padding:
+                0 15px;
+
+            color:
+                var(--tori-gray-500);
+
+        }
+
+
+        .search-input {
+
+            flex:
+                1;
+
+            min-width:
+                0;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            padding:
+                13px 5px;
+
+            color:
+                var(--tori-gray-900);
+
+            background:
+                transparent;
+
+            font-size:
+                0.98rem;
+
+        }
+
+
+        .search-input::placeholder {
+
+            color:
+                var(--tori-gray-500);
+
+        }
+
+
+        .search-button {
+
+            border:
+                none;
+
+            border-radius:
+                8px;
+
+            padding:
+                0 22px;
+
+            background:
+                var(--tori-red);
+
+            color:
+                var(--tori-white);
+
+            font-size:
+                0.9rem;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.1s ease;
+
+        }
+
+
+        .search-button:hover {
+
+            background:
+                var(--tori-red-dark);
+
+        }
+
+
+        .search-button:active {
+
+            transform:
+                translateY(1px);
+
+        }
+
+
+        /* -----------------------------------------
+           SUGGESTED QUESTIONS
+        ----------------------------------------- */
+
+        .suggestions {
+
+            margin-top:
+                18px;
+
+        }
+
+
+        .suggestions-label {
+
+            display:
+                block;
+
+            margin-bottom:
+                9px;
+
+            color:
+                var(--tori-gray-500);
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .suggestion-btn {
+
+            display:
+                inline-block;
+
+            margin:
+                3px;
+
+            padding:
+                7px 12px;
+
+            border:
+                1px solid
+                var(--tori-gray-200);
+
+            border-radius:
+                50px;
+
+            background:
+                var(--tori-white);
+
+            color:
+                var(--tori-gray-700);
+
+            font-size:
+                0.78rem;
+
+            cursor:
+                pointer;
+
+            transition:
+                all 0.2s ease;
+
+        }
+
+
+        .suggestion-btn:hover {
+
+            border-color:
+                var(--tori-red);
+
+            color:
+                var(--tori-red);
+
+            background:
+                var(--tori-red-light);
+
+        }
+
+
+        /* -----------------------------------------
+           SECTION
+        ----------------------------------------- */
+
+        .section {
+
+            padding:
+                82px 0;
+
+        }
+
+
+        .section-light {
+
+            background:
+                var(--tori-gray-100);
+
+        }
+
+
+        .section-label {
+
+            margin-bottom:
+                8px;
+
+            color:
+                var(--tori-red);
+
+            font-size:
+                0.76rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.08em;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .section-title {
+
+            margin-bottom:
+                12px;
+
+            color:
+                var(--tori-black);
+
+            font-size:
+                2rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                -0.025em;
+
+        }
+
+
+        .section-description {
+
+            max-width:
+                700px;
+
+            color:
+                var(--tori-gray-500);
+
+        }
+
+
+        /* -----------------------------------------
+           QUICK START
+        ----------------------------------------- */
+
+        .quick-start-card {
+
+            height:
+                100%;
+
+            padding:
+                28px;
+
+            background:
+                var(--tori-white);
+
+            border:
+                1px solid
+                var(--tori-gray-200);
+
+            border-radius:
+                12px;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .quick-start-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 28px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .step-number {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            margin-bottom:
+                18px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--tori-red-light);
+
+            color:
+                var(--tori-red);
+
+            font-size:
+                0.82rem;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .quick-start-card h4 {
+
+            margin-bottom:
+                8px;
+
+            color:
+                var(--tori-black);
+
+            font-size:
+                1.05rem;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .quick-start-card p {
+
+            margin:
+                0;
+
+            color:
+                var(--tori-gray-500);
+
+            font-size:
+                0.88rem;
+
+        }
+
+
+        /* -----------------------------------------
+           WORKFLOW CONNECTOR
+        ----------------------------------------- */
+
+        .workflow {
+
+            position:
+                relative;
+
+        }
+
+
+        .workflow::before {
+
+            content: "";
+
+            position:
+                absolute;
+
+            top:
+                48px;
+
+            left:
+                12%;
+
+            right:
+                12%;
+
+            height:
+                1px;
+
+            background:
+                var(--tori-gray-200);
+
+            z-index:
+                0;
+
+        }
+
+
+        .workflow .col-md-3 {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+        }
+
+
+        /* -----------------------------------------
+           GUIDE PLACEHOLDER
+        ----------------------------------------- */
+
+        .guide-preview {
+
+            padding:
+                30px;
+
+            background:
+                var(--tori-white);
+
+            border:
+                1px solid
+                var(--tori-gray-200);
+
+            border-radius:
+                12px;
+
+        }
+
+
+        .guide-item {
+
+            padding:
+                18px 20px;
+
+            border-bottom:
+                1px solid
+                var(--tori-gray-200);
+
+            color:
+                var(--tori-gray-900);
+
+            font-weight:
+                600;
+
+        }
+
+
+        .guide-item:last-child {
+
+            border-bottom:
+                none;
+
+        }
+
+
+        .guide-item i {
+
+            width:
+                24px;
+
+            color:
+                var(--tori-red);
+
+        }
+
+
+        /* -----------------------------------------
+           FOOTER
+        ----------------------------------------- */
+
+        .footer {
+
+            padding:
+                42px 0;
+
+            background:
+                var(--tori-black);
+
+            color:
+                #bdbdbd;
+
+        }
+
+
+        .footer-brand {
+
+            color:
+                var(--tori-white);
+
+            font-weight:
+                800;
+
+        }
+
+
+        .footer-brand span {
+
+            color:
+                var(--tori-red);
+
+        }
+
+
+        /* -----------------------------------------
+           MOBILE
+        ----------------------------------------- */
+
+        @media (max-width: 767px) {
+
+            .hero {
+
+                padding:
+                    65px 0 60px;
+
+            }
+
+
+            .search-wrapper {
+
+                flex-direction:
+                    column;
+
+                padding:
+                    8px;
+
+            }
+
+
+            .search-icon {
+
+                display:
+                    none;
+
+            }
+
+
+            .search-input {
+
+                padding:
+                    12px;
+
+            }
+
+
+            .search-button {
+
+                min-height:
+                    46px;
+
+            }
+
+
+            .workflow::before {
+
+                display:
+                    none;
+
+            }
+
+
+            .section {
+
+                padding:
+                    60px 0;
+
+            }
+
+
+            .language-switcher {
+
+                margin:
+                    12px 0 0;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================== -->
+
+<nav class="navbar navbar-expand-lg tori-navbar sticky-top">
+
+    <div class="container">
+
+
+        <!-- BRAND -->
+
+        <a
+            class="navbar-brand tori-brand"
+            href="#"
+        >
+
+            <div class="tori-brand-mark">
+                T
+            </div>
+
+            TORI <span>NETWORK</span>
+
+        </a>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#toriNavigation"
+            aria-controls="toriNavigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+
+            <i class="fas fa-bars"></i>
+
+        </button>
+
+
+        <!-- NAVIGATION LINKS -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="toriNavigation"
+        >
+
+            <ul class="navbar-nav ml-auto align-items-lg-center">
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#quick-start"
+                    >
+                        Quick Start
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#guide"
+                    >
+                        Full Guide
+                    </a>
+
+                </li>
+
+
+                <!-- LANGUAGE -->
+
+                <li class="nav-item">
+
+                    <div
+                        class="language-switcher"
+                        aria-label="Language selection"
+                    >
+
+                        <button
+                            type="button"
+                            class="language-btn active"
+                            data-language="en"
+                        >
+                            EN
+                        </button>
+
+                        <button
+                            type="button"
+                            class="language-btn"
+                            data-language="fil"
+                        >
+                            FIL
+                        </button>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     HERO / ASK TORI
+========================================== -->
+
+<header class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+
+            <!-- LABEL -->
+
+            <div class="hero-label">
+
+                Tori Dump User Guide
+
+            </div>
+
+
+            <!-- MAIN TITLE -->
+
+            <h1>
+
+                How can we help you
+                <span class="highlight">
+                    use Tori Dump?
+                </span>
+
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p class="hero-description">
+
+                Ask a question about Tori Dump and find the
+                information you need. Learn how to upload,
+                organize, search, and retrieve your files.
+
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <div class="ask-tori">
+
+                <form
+                    id="toriSearchForm"
+                    class="search-wrapper"
+                >
+
+                    <div class="search-icon">
+
+                        <i class="fas fa-search"></i>
+
+                    </div>
+
+
+                    <input
+                        id="toriSearchInput"
+                        class="search-input"
+                        type="search"
+                        placeholder="Ask a question about Tori Dump..."
+                        aria-label="Ask a question about Tori Dump"
+                        autocomplete="off"
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="search-button"
+                    >
+
+                        Ask Tori
+
+                    </button>
+
+                </form>
+
+
+                <!-- SEARCH RESULT WILL APPEAR HERE LATER -->
+
+                <div
+                    id="toriSearchResult"
+                    class="mt-3"
+                    aria-live="polite"
+                >
+                </div>
+
+
+                <!-- SUGGESTIONS -->
+
+                <div class="suggestions">
+
+                    <span class="suggestions-label">
+
+                        Try asking:
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="How should I name my files?"
+                    >
+
+                        How should I name my files?
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="How does Tori organize files?"
+                    >
+
+                        How does Tori organize files?
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="How do I retrieve a file?"
+                    >
+
+                        How do I retrieve a file?
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="Can I upload multiple files?"
+                    >
+
+                        Can I upload multiple files?
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     QUICK START
+========================================== -->
+
+<section
+    class="section section-light"
+    id="quick-start"
+>
+
+    <div class="container">
+
+
+        <div class="text-center mb-5">
+
+            <div class="section-label">
+                Quick Start
+            </div>
+
+            <h2 class="section-title">
+                Get started in four steps
+            </h2>
+
+            <p class="section-description mx-auto">
+
+                Tori Dump is designed to reduce manual file
+                management and make information easier to retrieve.
+
+            </p>
+
+        </div>
+
+
+        <div class="row workflow">
+
+
+            <!-- STEP 1 -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="quick-start-card">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h4>
+                        Set Up AI Context
+                    </h4>
+
+                    <p>
+                        Establish the context Tori uses to understand
+                        your project and its files.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="quick-start-card">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h4>
+                        Open Tori Dump
+                    </h4>
+
+                    <p>
+                        Access Tori Dump from your Tori workspace
+                        without manually navigating through folder trees.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="quick-start-card">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h4>
+                        Upload Files
+                    </h4>
+
+                    <p>
+                        Drag and drop individual files or batches
+                        to trigger active ingestion.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 4 -->
+
+            <div class="col-md-3 mb-4">
+
+                <div class="quick-start-card">
+
+                    <div class="step-number">
+                        04
+                    </div>
+
+                    <h4>
+                        Search & Retrieve
+                    </h4>
+
+                    <p>
+                        Use contextual search and AI-powered retrieval
+                        to find relevant files.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FULL GUIDE
+========================================== -->
+
+<section
+    class="section"
+    id="guide"
+>
+
+    <div class="container">
+
+
+        <div class="mb-5">
+
+            <div class="section-label">
+                Explore
+            </div>
+
+            <h2 class="section-title">
+                Tori Dump Full Guide
+            </h2>
+
+            <p class="section-description">
+
+                Explore each topic to learn how Tori Dump handles
+                file naming, uploading, organization, indexing,
+                and retrieval.
+
+            </p>
+
+        </div>
+
+
+        <!-- GUIDE CONTENT WILL BE BUILT NEXT -->
+
+        <div class="guide-preview">
+
+
+            <div class="guide-item">
+
+                <i class="fas fa-info-circle"></i>
+
+                What is Tori Dump?
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <i class="fas fa-file-signature"></i>
+
+                How should I name my files?
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <i class="fas fa-cloud-upload-alt"></i>
+
+                How do I upload files?
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <i class="fas fa-folder-open"></i>
+
+                How does Tori organize files?
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <i class="fas fa-search"></i>
+
+                How does AI-powered retrieval work?
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <i class="fas fa-building"></i>
+
+                Tori Dump for government work
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+
+                <div class="footer-brand">
+
+                    TORI <span>NETWORK</span>
+
+                </div>
+
+                <small>
+
+                    Tori Dump · Interactive User Guide
+
+                </small>
+
+            </div>
+
+
+            <div class="col-md-6 text-md-right mt-3 mt-md-0">
+
+                <small>
+
+                    Built for Tori Workspace users
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT LIBRARIES
+========================================== -->
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+</script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
+</script>
+
+<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script>
+
+
+<!-- =========================================
+     TORI GUIDE JAVASCRIPT
+========================================== -->
+
+<script>
+
+    /*
+     * ==========================================
+     * SUGGESTION BUTTONS
+     * ==========================================
+     *
+     * For now these buttons simply place their
+     * question into the search field.
+     *
+     * The actual Tori knowledge engine will be
+     * added in the next step.
+     */
+
+    const searchInput =
+        document.getElementById("toriSearchInput");
+
+
+    const suggestionButtons =
+        document.querySelectorAll(".suggestion-btn");
+
+
+    suggestionButtons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            const question =
+                button.getAttribute("data-question");
+
+            searchInput.value =
+                question;
+
+            searchInput.focus();
+
+        });
+
+    });
+
+
+    /*
+     * ==========================================
+     * SEARCH FORM
+     * ==========================================
+     *
+     * Temporary behavior.
+     *
+     * The real Version A knowledge-base search
+     * will replace this message.
+     */
+
+    const searchForm =
+        document.getElementById("toriSearchForm");
+
+
+    const searchResult =
+        document.getElementById("toriSearchResult");
+
+
+    searchForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const question =
+            searchInput.value.trim();
+
+
+        if (!question) {
+
+            searchInput.focus();
+
+            return;
+
+        }
+
+
+        searchResult.innerHTML = `
+
+            <div
+                class="alert alert-light border text-left"
+                role="status"
+            >
+
+                <strong>
+                    Your question:
+                </strong>
+
+                ${question}
+
+                <br>
+
+                <small class="text-muted">
+
+                    Tori's knowledge engine will be connected
+                    here in the next step.
+
+                </small>
+
+            </div>
+
+        `;
+
+    });
+
+
+    /*
+     * ==========================================
+     * LANGUAGE SWITCHER
+     * ==========================================
+     *
+     * The full English / Filipino translation
+     * system will be added after the page
+     * structure is complete.
+     */
+
+    const languageButtons =
+        document.querySelectorAll(".language-btn");
+
+
+    languageButtons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            languageButtons.forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+            button.classList.add("active");
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
