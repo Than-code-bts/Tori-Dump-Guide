@@ -978,5 +978,111 @@
         });
     });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // =TORI — BASIC CHAT ENGINE=// 
+    const chatInput = document.getElementById("chat-input");
+    const sendButton = document.getElementById("send-button");
+    const chatContainer = document.getElementById("chat-container");
+    const clearButton = document.getElementById("clear-button");
+    //-SAFETY CHECK-//
+    if (!chatInput || !sendButton || !chatContainer) {
+        console.error("TORI: Required chat elements were not found.");
+        return;}
+    // -SEND MESSAGE -//
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+        // Display user's message
+        addMessage(message, "user");
+        // Clear input
+        chatInput.value = "";
+        // Show TORI thinking state
+        const thinkingMessage = addMessage(
+            "TORI is thinking...",
+            "tori thinking");
+        // Small delay to make the interaction feel natural
+        setTimeout(() => {
+            thinkingMessage.remove();
+            const response = getToriResponse(message);
+            addMessage(response, "tori");}, 700);}
+    // -ADD MESSAGE TO CHAT -//
+    function addMessage(message, sender) {
+        const messageElement = document.createElement("div");
+        messageElement.className = `message ${sender}`;
+        messageElement.textContent = message;
+        chatContainer.appendChild(messageElement);
+        // Automatically scroll to newest message
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        return messageElement;}
+    // -TORI RESPONSE ENGINE -//
+    function getToriResponse(message) {
+        const input = message.toLowerCase().trim();
+        // Greetings
+        if (
+            input.includes("hello") ||
+            input.includes("hi") ||
+            input.includes("hey")
+        ) {
+            return "Hello! I'm TORI. How can I help you?";}
+        // Identity
+        if (
+            input.includes("who are you") ||
+            input.includes("what are you")
+        ) {
+            return "I'm TORI — your personal AI assistant. I'm currently running in basic interactive mode.";}
+        // Capabilities
+        if (
+            input.includes("what can you do") ||
+            input === "help"
+        ) {
+            return "Right now, I can respond to basic commands, manage the conversation interface, and demonstrate TORI's interaction system. AI-powered capabilities will be connected in a later step.";}
+        // How are you
+        if (input.includes("how are you")) {
+            return "I'm functioning properly and ready to help.";}
+        // Thank you
+        if (
+            input.includes("thank you") ||
+            input.includes("thanks")
+        ) {
+            return "You're welcome!";}
+        // Clear command
+        if (
+            input === "clear" ||
+            input === "clear chat"
+        ) {
+            clearChat();
+            return "";}
+        // Default response
+        return "I received your message. My full AI reasoning system isn't connected yet, but the TORI interface is working.";}
+    // -CLEAR CHAT -// 
+    function clearChat() {
+        chatContainer.innerHTML = "";
+        addMessage(
+            "Conversation cleared. How can I help?",
+            "tori"
+        );}
+    // -BUTTON CLICK-//
+    sendButton.addEventListener("click", sendMessage);
+    // -ENTER KEY- //
+    chatInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+    //-CLEAR BUTTON-// 
+    if (clearButton) {
+        clearButton.addEventListener("click", clearChat);
+    }
+    // -INITIAL TORI MESSAGE- // 
+    if (chatContainer.children.length === 0) {
+        addMessage(
+            "Hello! I'm TORI. How can I help you?",
+            "tori"
+        );
+    }
+});
+</script>
 </body>
 </html>
