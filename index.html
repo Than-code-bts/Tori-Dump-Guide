@@ -931,8 +931,7 @@
         });
     });
 
-    /*==SEARCH FORM==*/
-
+    /*==SEARCH FORM / TORI KNOWLEDGE ENGINE==*/
     const searchForm =
         document.getElementById("toriSearchForm");
     const searchResult =
@@ -943,24 +942,77 @@
             searchInput.value.trim();
         if (!question) {
             searchInput.focus();
-            return;}
+            return;
+        }
+        // Show thinking state
         searchResult.innerHTML = `
             <div
                 class="alert alert-light border text-left"
                 role="status"
             >
                 <strong>
-                    Your question:
+                    TORI
                 </strong>
-                ${question}
                 <br>
-                <small class="text-muted">
-                    Tori's knowledge engine will be connected
-                    here in the next step.
-                </small>
+                <span class="text-muted">
+                    Searching my knowledge...
+                </span>
             </div>
         `;
+        // Small delay for natural interaction
+        setTimeout(function() {
+            const result =
+                generateToriAnswer(question);
+            if (!result.found) {
+                searchResult.innerHTML = `
+                    <div
+                        class="alert alert-light border text-left"
+                        role="status"
+                    >
+                        <strong>
+                            TORI
+                        </strong>
+                        <p class="mb-0 mt-2">
+                            ${result.answer}
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            const sources =
+                result.sources
+                    .map(function(source) {
+                        return `<li>${source}</li>`;
+                    })
+                    .join("");
+            searchResult.innerHTML = `
+                <div
+                    class="alert alert-light border text-left"
+                    role="status"
+                >
+                    <strong>
+                        TORI
+                    </strong>
+                    <p class="mt-2 mb-2">
+                        ${formatToriAnswer(result.answer)}
+                    </p>
+                    <hr>
+                    <small class="text-muted">
+                        <strong>Knowledge sources:</strong>
+                    </small>
+                    <ul class="mb-0 mt-1">
+                        ${sources}
+                    </ul>
+                </div>
+            `;
+        }, 400);
     });
+    /*==FORMAT TORI ANSWER==*/
+    function formatToriAnswer(text) {
+        return text
+            .trim()
+            .replace(/\n\n/g, "<br><br>")
+            .replace(/\n/g, "<br>");    }
     /*==LANGUAGE SWITCHER==
      * The full English / Filipino translation
      * system will be added after the page
@@ -1014,46 +1066,43 @@ document.addEventListener("DOMContentLoaded", () => {
         // Automatically scroll to newest message
         chatContainer.scrollTop = chatContainer.scrollHeight;
         return messageElement;}
-    // -TORI RESPONSE ENGINE -//
+    // -TORI KNOWLEDGE RESPONSE ENGINE-//
     function getToriResponse(message) {
         const input = message.toLowerCase().trim();
-        // Greetings
+        // -BASIC GREETINGS -//
         if (
-            input.includes("hello") ||
-            input.includes("hi") ||
-            input.includes("hey")
+            input === "hi" ||
+            input === "hello" ||
+            input === "hey" ||
+            input.startsWith("hi ") ||
+            input.startsWith("hello ")
         ) {
-            return "Hello! I'm TORI. How can I help you?";}
-        // Identity
-        if (
-            input.includes("who are you") ||
-            input.includes("what are you")
-        ) {
-            return "I'm TORI — your personal AI assistant. I'm currently running in basic interactive mode.";}
-        // Capabilities
-        if (
-            input.includes("what can you do") ||
-            input === "help"
-        ) {
-            return "Right now, I can respond to basic commands, manage the conversation interface, and demonstrate TORI's interaction system. AI-powered capabilities will be connected in a later step.";}
-        // How are you
-        if (input.includes("how are you")) {
-            return "I'm functioning properly and ready to help.";}
-        // Thank you
-        if (
-            input.includes("thank you") ||
-            input.includes("thanks")
-        ) {
-            return "You're welcome!";}
-        // Clear command
+            return "Hello! I'm TORI. How can I help you?";
+        }
+        // -CLEAR CHAT- //
         if (
             input === "clear" ||
             input === "clear chat"
         ) {
             clearChat();
             return "";}
-        // Default response
-        return "I received your message. My full AI reasoning system isn't connected yet, but the TORI interface is working.";}
+        // -SEARCH TORI KNOWLEDGE BASE- //
+        const result = generateToriAnswer(message);
+        // -NO KNOWLEDGE FOUND-//
+        if (!result.found) {
+            return result.answer;}
+        // -RETURN KNOWLEDGE ANSWER- //
+        let response = result.answer;
+        // Add knowledge sources
+        if (
+            result.sources &&
+            result.sources.length > 0
+        ) {
+            response +=
+                "\n\nKnowledge sources: " +
+                result.sources.join(", ");}
+        return response;
+    }
     // -CLEAR CHAT -// 
     function clearChat() {
         chatContainer.innerHTML = "";
@@ -1070,10 +1119,9 @@ document.addEventListener("DOMContentLoaded", () => {
             sendMessage();
         }
     });
-    //-CLEAR BUTTON-// 
+    //- CLEAR BUTTON-// 
     if (clearButton) {
-        clearButton.addEventListener("click", clearChat);
-    }
+        clearButton.addEventListener("click", clearChat);}
     // -INITIAL TORI MESSAGE- // 
     if (chatContainer.children.length === 0) {
         addMessage(
@@ -1083,5 +1131,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+
+<script src="knowledge.js"></script>
+
 </body>
 </html>
