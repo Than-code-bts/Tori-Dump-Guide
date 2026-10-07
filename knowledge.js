@@ -602,44 +602,148 @@ AI and technology to improve productivity.
 function searchToriKnowledge(question) {
     const query = question.toLowerCase().trim();
     if (!query) {
-        return [];}
-    const words = query
-        .replace(/[^\w\s]/g, "")
+        return [];
+    }
+    // - Common question words that usually do not help identify a topic - //
+    const stopWords = new Set([
+        "what",
+        "what's",
+        "what is",
+        "who",
+        "who's",
+        "who is",
+        "how",
+        "how does",
+        "how do",
+        "how can",
+        "why",
+        "when",
+        "where",
+        "which",
+        "can",
+        "could",
+        "would",
+        "should",
+        "does",
+        "do",
+        "is",
+        "are",
+        "the",
+        "a",
+        "an",
+        "of",
+        "to",
+        "for",
+        "in",
+        "on",
+        "with",
+        "about",
+        "and",
+        "or",
+        "it",
+        "this",
+        "that",
+        "tell",
+        "me",
+        "please",
+        "explain",
+        "describe",
+        "give"
+    ]);
+    // - Clean the question - //
+    const cleanedQuery = query
+        .replace(/[^\w\s/-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    // - Create useful search terms - //
+    const words = cleanedQuery
         .split(/\s+/)
-        .filter(word => word.length > 2);
+        .filter(word => word.length > 2)
+        .filter(word => !stopWords.has(word));
+    // -Create a set for faster matching - //
+    const wordSet = new Set(words);
     const results = TORI_KNOWLEDGE.map(entry => {
         let score = 0;
-        // - Exact keyword matches - //
-        entry.keywords.forEach(keyword => {
-            const normalizedKeyword = keyword.toLowerCase();
-            if (query.includes(normalizedKeyword)) {
-                score += 10;}
+        const title = entry.title.toLowerCase();
+        const content = entry.content.toLowerCase();
+        const keywords = entry.keywords.map(keyword =>
+            keyword.toLowerCase()
+        );
+        // = EXACT PHRASE MATCH = //
+        keywords.forEach(keyword => {
+            if (cleanedQuery.includes(keyword)) {
+                score += 15;
+            }
+        });
+        // = TITLE MATCH = //
+        words.forEach(word => {
+
+            if (title.includes(word)) {
+                score += 8;
+            }
+        });
+        // = KEYWORD MATCH = //
+        keywords.forEach(keyword => {
             words.forEach(word => {
-                if (normalizedKeyword.includes(word)) {
+                // - Exact word match - //
+                if (keyword === word) {
+                    score += 6;
+                }
+                // - Keyword contains the search word - //
+                else if (keyword.includes(word)) {
+                    score += 3;
+                }
+                // - earch word contains the keyword - //
+                else if (word.includes(keyword)) {
                     score += 3;
                 }
             });
         });
-        // - Title matching - //
+        // = CONTENT MATCH = //
         words.forEach(word => {
-            if (entry.title.toLowerCase().includes(word)) {
-                score += 5;
-            }
-        });
-        // - Content matching - //
-        words.forEach(word => {
-            if (entry.content.toLowerCase().includes(word)) {
+            if (content.includes(word)) {
                 score += 1;
             }
         });
+        // = MULTIPLE MATCH BONUS = //
+        let matchedWords = 0;
+        words.forEach(word => {
+            const keywordMatch = keywords.some(keyword =>
+                keyword.includes(word) || word.includes(keyword)
+            );
+            const titleMatch = title.includes(word);
+            if (keywordMatch || titleMatch) {
+                matchedWords++;
+            }
+        });
+        // - Reward entries that match several concepts - //
+        if (matchedWords >= 2) {
+            score += 5;
+        }
+        if (matchedWords >= 3) {
+            score += 5;
+        }
+        // = QUERY RELEVANCE RATIO = //
+        if (words.length > 0) {
+            const relevanceRatio = matchedWords / words.length;
+            // - Strong match across most meaningful words - //
+            if (relevanceRatio >= 0.75) {
+                score += 8;
+            }
+            // - Moderate match - //
+            else if (relevanceRatio >= 0.50) {
+                score += 4;
+            }
+        }
         return {
             ...entry,
             score
         };
     });
-    return results
-        .filter(result => result.score > 0)
-        .sort((a, b) => b.score - a.score);
+    // = SORT RESULTS = //
+    results.sort((a, b) => b.score - a.score);
+    // Only return meaningful matches
+    return results.filter(result => result.score >= 4);
 }
 // = TORI ANSWER GENERATOR = //
 function generateToriAnswer(question) {
