@@ -748,6 +748,7 @@ function searchToriKnowledge(question) {
 // = TORI ANSWER GENERATOR = //
 function generateToriAnswer(question) {
     const results = searchToriKnowledge(question);
+    // =NO RESULTS= //
     if (results.length === 0) {
         return {
             found: false,
@@ -758,22 +759,43 @@ to answer that question confidently.
 Try asking about Tori Dump, file routing, metadata, fuzzy matching,
 Kalasag AI, file retrieval, contextual search, active ingestion,
 R.A. 10121, DRRM, or government records management.
-            `,
+`,
             sources: []
         };
     }
-    const bestResults = results.slice(0, 3);
+    // =BEST RESULT =//
+    const bestResult = results[0];
+    let selectedResults = [bestResult];
+    // - NOTE TO THAN - ONLY INCLUDE ADDITIONAL RESULTS IF THEY ARE CLOSELY RELEVANT - //
+    for (let i = 1; i < results.length && selectedResults.length < 3; i++) {
+        const currentResult = results[i];
+        const scoreDifference =
+            bestResult.score - currentResult.score;
+        const scoreRatio =
+            currentResult.score / bestResult.score;
+        // - NOTE TO THAN - Include the additional result only when: Its score is close to the best result, OR It has at least 60% of the best result's score - This prevents weakly related knowledge from being automatically added to the answer -//
+        if (
+            scoreDifference <= 8 ||
+            scoreRatio >= 0.60
+        ) {
+            selectedResults.push(currentResult);
+        }
+    }
+    // = BUILD ANSWER = //
     let answer = "";
-    bestResults.forEach((result, index) => {
+    selectedResults.forEach((result, index) => {
         if (index === 0) {
             answer += result.content.trim();
         } else {
             answer += "\n\n" + result.content.trim();
         }
     });
+    // = RETURN ANSWER + SOURCES = //
     return {
         found: true,
         answer: answer,
-        sources: bestResults.map(result => result.title)
+        sources: selectedResults.map(
+            result => result.title
+        )
     };
 }
