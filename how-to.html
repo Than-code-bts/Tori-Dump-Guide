@@ -1,378 +1,1312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- =BASIC PAGE INFORMATION= -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tori Dump | How to Use</title>
-    <!-- Bootstrap 4 -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="TORI Dump interactive user guide">
+    <meta name="author"
+          content="TORI Network">
+    <title>
+        Tori Dump | How to Use
+    </title>
+    <!-- =BOOTSTRAP 4= -->
     <link
         rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    >
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- =FONT AWESOME= -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- =GOOGLE FONT= -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- =TORI DESIGN SYSTEM= -->
     <style>
-        /* =TORI DUMP GUIDE - Base Styles= */
+        /* =COLOR SYSTEM= */
+        :root {
+            --tori-red: #d9232e;
+            --tori-red-dark: #b91c26;
+            --tori-red-light: #fff1f2;
+            --tori-black: #171717;
+            --tori-dark: #262626;
+            --tori-gray-900: #333333;
+            --tori-gray-700: #555555;
+            --tori-gray-500: #737373;
+            --tori-gray-300: #d4d4d4;
+            --tori-gray-200: #e5e5e5;
+            --tori-gray-100: #f5f5f5;
+            --tori-white: #ffffff;
+        }
+        /* =GLOBAL= */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
-            color: #243447;
+            margin: 0;
+            font-family:
+                "Inter",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            color: var(--tori-gray-900);
+            background:
+                var(--tori-white);
             line-height: 1.7;
         }
+        a {
+            color: var(--tori-red);
+        }
+        a:hover {
+            color: var(--tori-red-dark);
+        }
+        /* =ACCESSIBILITY= */
+        :focus-visible {
+            outline:
+                3px solid
+                rgba(217, 35, 46, 0.35);
+            outline-offset: 3px;
+        }
+        /* =NAVIGATION= */
+        .tori-navbar {
+            background:
+                var(--tori-white);
+            border-bottom:
+                1px solid
+                var(--tori-gray-200);
+            padding:
+                12px 0;
+        }
+        .tori-brand {
+            display: flex;
+            align-items: center;
+            font-size:
+                1.15rem;
+            font-weight:
+                800;
+            letter-spacing:
+                -0.02em;
+            color:
+                var(--tori-black) !important;
+        }
+        .tori-logo {
+            width:
+                36px;
+            height:
+                36px;
+            object-fit:
+                cover;
+            border-radius:
+                8px;
+            margin-right:
+                10px;
+        }
+        .tori-brand span {
+            color:
+                var(--tori-red);
+        }
+        .navbar-nav .nav-link {
+            color:
+                var(--tori-gray-700) !important;
+            font-size:
+                0.9rem;
+            font-weight:
+                500;
+            margin-left:
+                10px;
+            transition:
+                color 0.2s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color:
+                var(--tori-red) !important;
+        }
+        /* =LANGUAGE SWITCHER= */
+        .language-switcher {
+            display:
+                flex;
+            align-items:
+                center;
+            margin-left:
+                18px;
+        }
+        .language-btn {
+            border:
+                1px solid
+                var(--tori-gray-200);
+            background:
+                var(--tori-white);
+            color:
+                var(--tori-gray-700);
+            padding:
+                5px 10px;
+            font-size:
+                0.78rem;
+            font-weight:
+                600;
+            cursor:
+                pointer;
+            transition:
+                all 0.2s ease;
+        }
+        .language-btn:first-child {
+            border-radius:
+                6px 0 0 6px;
+        }
+        .language-btn:last-child {
+            border-radius:
+                0 6px 6px 0;
+            border-left:
+                none;
+        }
+        .language-btn.active {
+            background:
+                var(--tori-red);
+            color:
+                var(--tori-white);
+            border-color:
+                var(--tori-red);
+        }
+        /* =HERO= */
         .hero {
-            background: #ffffff;
-            padding: 70px 20px;
-            border-bottom: 1px solid #e5e7eb;
+            position:
+                relative;
+            overflow:
+                hidden;
+            padding:
+                88px 0 82px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7f7 0%,
+                    #ffffff 55%,
+                    #fffafa 100%
+                );
+            border-bottom:
+                1px solid
+                var(--tori-gray-200);
         }
-        .hero h1 {
-            font-weight: 700;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: #5f6b7a;
-            max-width: 700px;
-            margin: 0 auto;
+        .hero::before {
+            content: "";
+            position:
+                absolute;
+            width:
+                320px;
+            height:
+                320px;
+            border-radius:
+                50%;
+            background:
+                rgba(217, 35, 46, 0.05);
+            top:
+                -140px;
+            right:
+                -80px;
         }
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            position:
+                relative;
+            z-index:
+                2;
+            text-align:
+                center;
         }
-        
+        .hero-logo {
+            width:
+                58px;
+            height:
+                58px;
+            object-fit:
+                cover;
+            border-radius:
+                12px;
+            margin-bottom:
+                20px;
+            box-shadow:
+                0 8px 22px
+                rgba(0, 0, 0, 0.08);
+        }
         .hero-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            color: #6b7280;
-            margin-bottom: 12px;
+            display:
+                inline-block;
+            margin-bottom:
+                18px;
+            padding:
+                6px 13px;
+            border-radius:
+                50px;
+            background:
+                var(--tori-red-light);
+            color:
+                var(--tori-red);
+            font-size:
+                0.78rem;
+            font-weight:
+                700;
+            letter-spacing:
+                0.04em;
+            text-transform:
+                uppercase;
         }
-        
-        .hero-subtitle {
-            font-size: 1.35rem !important;
-            font-weight: 600;
-            margin-bottom: 10px !important;
-            color: #344054 !important;
+        .hero h1 {
+            margin-bottom:
+                18px;
+            color:
+                var(--tori-black);
+            font-size:
+                clamp(2.2rem, 5vw, 3.7rem);
+            line-height:
+                1.12;
+            font-weight:
+                800;
+            letter-spacing:
+                -0.045em;
         }
-        
-        .language-switcher .btn {
-            margin-left: 5px;
+        .hero h1 .highlight {
+            color:
+                var(--tori-red);
         }
-        
-        .language-switcher .active {
-            background: #343a40;
-            color: #ffffff;
+        .hero-description {
+            max-width:
+                720px;
+            margin:
+                0 auto 34px;
+            color:
+                var(--tori-gray-500);
+            font-size:
+                1.05rem;
         }
+        /* =ASK TORI SEARCH= */
+        .ask-tori {
+            max-width:
+                780px;
+            margin:
+                0 auto;
+        }
+        .search-wrapper {
+            display:
+                flex;
+            align-items:
+                stretch;
+            padding:
+                7px;
+            background:
+                var(--tori-white);
+            border:
+                1px solid
+                var(--tori-gray-300);
+            border-radius:
+                12px;
+            box-shadow:
+                0 12px 35px
+                rgba(0, 0, 0, 0.08);
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+        .search-wrapper:focus-within {
+            border-color:
+                var(--tori-red);
+            box-shadow:
+                0 12px 40px
+                rgba(217, 35, 46, 0.12);
+        }
+        .search-icon {
+            display:
+                flex;
+            align-items:
+                center;
+            padding:
+                0 15px;
+            color:
+                var(--tori-gray-500);
+        }
+        .search-input {
+            flex:
+                1;
+            min-width:
+                0;
+            border:
+                none;
+            outline:
+                none;
+            padding:
+                13px 5px;
+            color:
+                var(--tori-gray-900);
+            background:
+                transparent;
+            font-size:
+                0.98rem;
+        }
+        .search-input::placeholder {
+            color:
+                var(--tori-gray-500);
+        }
+        .search-button {
+            border:
+                none;
+            border-radius:
+                8px;
+            padding:
+                0 22px;
+            background:
+                var(--tori-red);
+            color:
+                var(--tori-white);
+            font-size:
+                0.9rem;
+            font-weight:
+                700;
+            cursor:
+                pointer;
+            transition:
+                background 0.2s ease,
+                transform 0.1s ease;
+        }
+        .search-button:hover {
+            background:
+                var(--tori-red-dark);
+        }
+        .search-button:active {
+            transform:
+                translateY(1px);
+        }
+        /* =SEARCH RESULT= */
+        .search-result {
+            margin-top:
+                18px;
+            text-align:
+                left;
+        }
+        .tori-answer {
+            padding:
+                20px;
+            background:
+                var(--tori-white);
+            border:
+                1px solid
+                var(--tori-gray-200);
+            border-left:
+                4px solid
+                var(--tori-red);
+            border-radius:
+                10px;
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.05);
+        }
+        .tori-answer-label {
+            color:
+                var(--tori-red);
+            font-size:
+                0.75rem;
+            font-weight:
+                800;
+            letter-spacing:
+                0.08em;
+            text-transform:
+                uppercase;
+            margin-bottom:
+                7px;
+        }
+        .tori-answer p {
+            margin-bottom:
+                10px;
+            color:
+                var(--tori-gray-900);
+        }
+        .tori-answer hr {
+            border-color:
+                var(--tori-gray-200);
+        }
+        /* =SUGGESTIONS= */
+        .suggestions {
+            margin-top:
+                18px;
+        }
+        .suggestions-label {
+            display:
+                block;
+            margin-bottom:
+                9px;
+            color:
+                var(--tori-gray-500);
+            font-size:
+                0.78rem;
+            font-weight:
+                600;
+        }
+        .suggestion-btn {
+            display:
+                inline-block;
+            margin:
+                3px;
+            padding:
+                7px 12px;
+            border:
+                1px solid
+                var(--tori-gray-200);
+            border-radius:
+                50px;
+            background:
+                var(--tori-white);
+            color:
+                var(--tori-gray-700);
+            font-size:
+                0.78rem;
+            cursor:
+                pointer;
+            transition:
+                all 0.2s ease;
+        }
+        .suggestion-btn:hover {
+            border-color:
+                var(--tori-red);
+            color:
+                var(--tori-red);
+            background:
+                var(--tori-red-light);
+        }
+        /* =SECTIONS= */
         .section {
-            padding: 60px 20px;
-        }
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        .section-intro {
-            color: #667085;
-            max-width: 750px;
-            margin-bottom: 35px;
-        }
-        .info-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 25px;
-            height: 100%;
-        }
-        .step-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 20px;
-            border: 1px solid #e5e7eb;
-        }
-        .step-number {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        .file-example {
-            background: #f1f5f9;
-            border-radius: 8px;
-            padding: 15px;
-            font-family: monospace;
-            word-break: break-word;
-        }
-        .footer {
-            background: #ffffff;
-            border-top: 1px solid #e5e7eb;
-            padding: 30px 20px;
-            text-align: center;
-            color: #667085;
-        }
-        /* Language switcher */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-        }
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .language-switcher {
-                position: static;
-                margin-bottom: 25px;
-            }
-        }
-        /* =TORI DUMP WORKFLOW= */
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            color: #6b7280;
-            margin-bottom: 10px;
-        }
-        .section-heading h2 {
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .section-heading p {
-            max-width: 650px;
-            margin: 0 auto;
-            color: #667085;
+            padding:
+                82px 0;
         }
         .section-light {
-            background: #f8f9fa;
-            padding: 80px 0;
+            background:
+                var(--tori-gray-100);
         }
-        .step-card {
-            height: 100%;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 30px;
-            display: flex;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .section-label {
+            margin-bottom:
+                8px;
+            color:
+                var(--tori-red);
+            font-size:
+                0.76rem;
+            font-weight:
+                800;
+            letter-spacing:
+                0.08em;
+            text-transform:
+                uppercase;
         }
-        .step-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+        .section-title {
+            margin-bottom:
+                12px;
+            color:
+                var(--tori-black);
+            font-size:
+                2rem;
+            font-weight:
+                800;
+            letter-spacing:
+                -0.025em;
+        }
+        .section-description {
+            max-width:
+                700px;
+            color:
+                var(--tori-gray-500);
+        }
+        /* =QUICK START CARDS= */
+        .quick-start-card {
+            height:
+                100%;
+            padding:
+                28px;
+            background:
+                var(--tori-white);
+            border:
+                1px solid
+                var(--tori-gray-200);
+            border-radius:
+                12px;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+        .quick-start-card:hover {
+            transform:
+                translateY(-3px);
+            box-shadow:
+                0 10px 28px
+                rgba(0, 0, 0, 0.06);
         }
         .step-number {
-            min-width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #343a40;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-right: 22px;
+            display:
+                inline-flex;
+            align-items:
+                center;
+            justify-content:
+                center;
+            width:
+                40px;
+            height:
+                40px;
+            margin-bottom:
+                18px;
+            border-radius:
+                50%;
+            background:
+                var(--tori-red-light);
+            color:
+                var(--tori-red);
+            font-size:
+                0.82rem;
+            font-weight:
+                800;
         }
-        .step-content {
-            flex: 1;
+        .quick-start-card h4 {
+            margin-bottom:
+                8px;
+            color:
+                var(--tori-black);
+            font-size:
+                1.05rem;
+            font-weight:
+                700;
         }
-        .step-content h4 {
-            font-weight: 700;
-            margin-bottom: 12px;
+        .quick-start-card p {
+            margin:
+                0;
+            color:
+                var(--tori-gray-500);
+            font-size:
+                0.88rem;
         }
-        .step-content p {
-            color: #667085;
-            line-height: 1.7;
+        /* =WORKFLOW CONNECTOR= */
+        .workflow {
+            position:
+                relative;
         }
-        .step-example,
-        .step-highlight {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            background: #f8f9fa;
+        .workflow::before {
+            content: "";
+            position:
+                absolute;
+            top:
+                48px;
+            left:
+                12%;
+            right:
+                12%;
+            height:
+                1px;
+            background:
+                var(--tori-gray-200);
+            z-index:
+                0;
         }
-        .step-example strong,
-        .step-highlight strong {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+        .workflow .col-md-3 {
+            position:
+                relative;
+            z-index:
+                1;
         }
-        .step-example div {
-            font-size: 0.85rem;
-            margin-top: 6px;
-            word-break: break-word;
-        }
-        .bad-example {
-            color: #6b7280;
-        }
-        .good-example {
-            color: #343a40;
-            font-weight: 600;
-        }
-        .step-highlight p {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-        }
-        @media (max-width: 767px) {
-            .section-light {
-                padding: 60px 0;
-            }
-            .step-card {
-                padding: 24px;
-            }
-            .step-number {
-                min-width: 44px;
-                height: 44px;
-                margin-right: 15px;
-            }
-        }
-        /* =HOW TORI DUMP WORK= */
+        /* =INFORMATION CARDS= */
         .info-card {
-            height: 100%;
-            padding: 30px;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height:
+                100%;
+            padding:
+                28px;
+            background:
+                var(--tori-white);
+            border:
+                1px solid
+                var(--tori-gray-200);
+            border-radius:
+                12px;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
         .info-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+            transform:
+                translateY(-3px);
+            box-shadow:
+                0 10px 28px
+                rgba(0, 0, 0, 0.06);
         }
         .info-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: #343a40;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            display:
+                inline-flex;
+            align-items:
+                center;
+            justify-content:
+                center;
+            width:
+                42px;
+            height:
+                42px;
+            margin-bottom:
+                18px;
+            border-radius:
+                50%;
+            background:
+                var(--tori-red-light);
+            color:
+                var(--tori-red);
+            font-size:
+                0.85rem;
+            font-weight:
+                800;
         }
         .info-card h4 {
-            font-weight: 700;
-            margin-bottom: 12px;
+            color:
+                var(--tori-black);
+            font-size:
+                1.05rem;
+            font-weight:
+                700;
+            margin-bottom:
+                10px;
         }
         .info-card p {
-            color: #667085;
-            line-height: 1.7;
-            margin-bottom: 0;
+            color:
+                var(--tori-gray-500);
+            font-size:
+                0.9rem;
+            line-height:
+                1.7;
+            margin-bottom:
+                0;
         }
-        /* =GOVERNMENT USE CASES= */
-        .use-case-note {
-            display: block;
-            margin-top: 18px;
-            padding-top: 12px;
-            border-top: 1px solid #e5e7eb;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: #6b7280;
-            line-height: 1.5;
-        }        
+        /* =FILE NAMING EXAMPLES= */
+        .file-example {
+            padding:
+                18px;
+            border:
+                1px solid
+                var(--tori-gray-200);
+            border-radius:
+                8px;
+            background:
+                var(--tori-gray-100);
+            font-family:
+                monospace;
+            font-size:
+                0.82rem;
+            line-height:
+                1.8;
+            word-break:
+                break-word;
+        }
+        .bad-example {
+            color:
+                var(--tori-gray-500);
+        }
+        .good-example {
+            color:
+                var(--tori-red);
+            font-weight:
+                700;
+        }
+        .rule-box {
+            margin-top:
+                20px;
+            padding:
+                20px;
+            border-left:
+                4px solid
+                var(--tori-red);
+            border-radius:
+                8px;
+            background:
+                var(--tori-red-light);
+        }
+        .rule-box strong {
+            display:
+                block;
+            color:
+                var(--tori-black);
+            margin-bottom:
+                6px;
+        }
+        .rule-box p {
+            margin:
+                0;
+            color:
+                var(--tori-gray-700);
+            font-size:
+                0.88rem;
+        }
+        /* =GOVERNMENT NOTE= */
         .government-note {
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 22px 25px;
-            background: #f8f9fa;
-            border-left: 4px solid #343a40;
-            border-radius: 8px;
-        }        
-        .government-note strong {
-            display: block;
-            margin-bottom: 6px;
-        }        
-        .government-note p {
-            margin-bottom: 0;
-            color: #667085;
-            line-height: 1.7;
+            padding:
+                22px 25px;
+            background:
+                var(--tori-gray-100);
+            border-left:
+                4px solid
+                var(--tori-red);
+            border-radius:
+                8px;
         }
-        /* = FAQ = */
+        .government-note strong {
+            display:
+                block;
+            color:
+                var(--tori-black);
+            margin-bottom:
+                6px;
+        }
+        .government-note p {
+            margin:
+                0;
+            color:
+                var(--tori-gray-500);
+        }
+        .use-case-note {
+            display:
+                block;
+            margin-top:
+                16px;
+            padding-top:
+                12px;
+            border-top:
+                1px solid
+                var(--tori-gray-200);
+            color:
+                var(--tori-gray-500);
+            font-size:
+                0.76rem;
+            font-weight:
+                600;
+        }
+        /* =QUICK TIPS= */
+        .tip-list {
+            padding:
+                0;
+            margin:
+                0;
+            list-style:
+                none;
+        }
+        .tip-list li {
+            position:
+                relative;
+            padding:
+                13px 0 13px 32px;
+            border-bottom:
+                1px solid
+                var(--tori-gray-200);
+            color:
+                var(--tori-gray-700);
+            font-size:
+                0.9rem;
+        }
+        .tip-list li:last-child {
+            border-bottom:
+                none;
+        }
+        .tip-list li::before {
+            content:
+                "\f00c";
+            position:
+                absolute;
+            left:
+                2px;
+            top:
+                14px;
+            font-family:
+                "Font Awesome 5 Free";
+            font-weight:
+                900;
+            color:
+                var(--tori-red);
+        }
+        /* =FAQ= */
         #faqAccordion .card {
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            overflow: hidden;
+            border:
+                1px solid
+                var(--tori-gray-200);
+            border-radius:
+                10px;
+            overflow:
+                hidden;
+            margin-bottom:
+                10px;
         }
         #faqAccordion .card-header {
-            background: #ffffff;
-            border-bottom: none;
-            padding: 0;
-        }        
+            padding:
+                0;
+            background:
+                var(--tori-white);
+            border:
+                none;
+        }
         #faqAccordion .btn-link {
-            width: 100%;
-            text-align: left;
-            padding: 18px 20px;
-            color: #343a40;
-            font-weight: 600;
-            text-decoration: none;
-        }        
+
+            width:
+                100%;
+            text-align:
+                left;
+            padding:
+                18px 20px;
+            color:
+                var(--tori-black);
+            font-weight:
+                700;
+            text-decoration:
+                none;
+        }
         #faqAccordion .btn-link:hover {
-            color: #000000;
-            text-decoration: none;
-        }        
+
+            color:
+                var(--tori-red);
+            text-decoration:
+                none;
+        }
         #faqAccordion .card-body {
-            padding: 0 20px 20px 20px;
-            color: #667085;
-            line-height: 1.7;
+            padding:
+                0 20px 20px;
+            color:
+                var(--tori-gray-500);
+            line-height:
+                1.7;
+        }
+        /* =FOOTER= */
+        .footer {
+            padding:
+                42px 0;
+            background:
+                var(--tori-black);
+            color:
+                #bdbdbd;
+        }
+        .footer-brand {
+            color:
+                var(--tori-white);
+            font-weight:
+                800;
+        }
+        .footer-brand span {
+            color:
+                var(--tori-red);
+        }
+        /* =MOBILE= */
+        @media (max-width: 767px) {
+            .hero {
+                padding:
+                    65px 0 60px;
+            }
+            .search-wrapper {
+                flex-direction:
+                    column;
+                padding:
+                    8px;
+            }
+            .search-icon {
+
+                display:
+                    none;
+            }
+            .search-input {
+
+                padding:
+                    12px;
+            }
+            .search-button {
+
+                min-height:
+                    46px;
+            }
+            .workflow::before {
+
+                display:
+                    none;
+            }
+            .section {
+
+                padding:
+                    60px 0;
+            }
+            .language-switcher {
+                margin:
+                    12px 0 0;
+            }
+            .hero h1 {
+                font-size:
+                    2.35rem;
+            }
         }
     </style>
 </head>
 <body>
-<!-- =HERO= -->
-<header class="hero text-center">
+<!-- =NAVIGATION= -->
+<nav class="navbar navbar-expand-lg tori-navbar sticky-top">
     <div class="container">
-        <!-- Language Switcher -->
-        <div class="language-switcher">
-            <button
-                class="btn btn-sm btn-outline-secondary active"
-                onclick="setLanguage('en')"
-                id="englishBtn"
+        <a
+            class="navbar-brand tori-brand"
+            href="index.html"
+        >
+            <img
+                src="tori-logo.png"
+                alt="TORI"
+                class="tori-logo"
             >
-                English
-            </button>
-            <button
-                class="btn btn-sm btn-outline-secondary"
-                onclick="setLanguage('fil')"
-                id="filipinoBtn"
-            >
-                Filipino
-            </button>
+            TORI <span>NETWORK</span>
+
+        </a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#toriNavigation"
+            aria-controls="toriNavigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+        <div
+            class="collapse navbar-collapse"
+            id="toriNavigation"
+        >
+            <ul class="navbar-nav ml-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="#quick-start"
+                        data-en="Quick Start"
+                        data-fil="Mabilis na Pagsisimula"
+                    >
+                        Quick Start
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="#guide"
+                        data-en="Full Guide"
+                        data-fil="Buong Gabay"
+                    >
+                        Full Guide
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div
+                        class="language-switcher"
+                        aria-label="Language selection"
+                    >
+                        <button
+                            type="button"
+                            class="language-btn active"
+                            data-language="en"
+                        >
+                            EN
+                        </button>
+                        <button
+                            type="button"
+                            class="language-btn"
+                            data-language="fil"
+                        >
+                            FIL
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </div>
+    </div>
+</nav>
+<!-- =HERO= -->
+<header class="hero">
+    <div class="container">
         <div class="hero-content">
-            <div class="hero-label">
-                TORI WORKSPACE
+            <img
+                src="tori-logo.png"
+                alt="TORI"
+                class="hero-logo"
+            >
+            <div
+                class="hero-label"
+                data-en="Tori Dump User Guide"
+                data-fil="Gabay sa Paggamit ng Tori Dump"
+            >
+                Tori Dump User Guide
             </div>
-            <h1 id="heroTitle">
-                Tori Dump
+            <h1>
+                <span
+                    data-en="How can we help you"
+                    data-fil="Paano ka namin matutulungan"
+                >
+                    How can we help you
+                </span>
+                <span
+                    class="highlight"
+                    data-en="use Tori Dump?"
+                    data-fil="gamitin ang Tori Dump?"
+                >
+                    use Tori Dump?
+                </span>
             </h1>
-            <p class="hero-subtitle" id="heroSubtitle">
-                How to Use Tori Dump
+            <p
+                class="hero-description"
+                data-en="Learn how to name, upload, organize, search, and retrieve files using Tori Dump."
+                data-fil="Alamin kung paano pangalanan, i-upload, ayusin, hanapin, at i-retrieve ang mga file gamit ang Tori Dump."
+            >
+                Learn how to name, upload, organize, search,
+                and retrieve files using Tori Dump.
             </p>
-            <p id="heroDescription">
-                A practical guide to smarter file management,
-                organization, and AI-powered retrieval.
-            </p>
+            <!-- SEARCH -->
+            <div class="ask-tori">
+                <form
+                    id="toriSearchForm"
+                    class="search-wrapper"
+                >
+                    <div class="search-icon">
+
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input
+                        id="toriSearchInput"
+                        class="search-input"
+                        type="search"
+                        placeholder="Ask a question about Tori Dump..."
+                        aria-label="Ask a question about Tori Dump"
+                        autocomplete="off"
+                    >
+                    <button
+                        type="submit"
+                        class="search-button"
+                        data-en="Ask Tori"
+                        data-fil="Magtanong kay Tori"
+                    >
+                        Ask Tori
+                    </button>
+                </form>
+                <div
+                    id="toriSearchResult"
+                    class="search-result"
+                    aria-live="polite"
+                >
+                </div>
+                <!-- SUGGESTIONS -->
+                <div class="suggestions">
+                    <span
+                        class="suggestions-label"
+                        data-en="Try asking:"
+                        data-fil="Subukang itanong:"
+                    >
+                        Try asking:
+                    </span>
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="How should I name my files?"
+                        data-en="How should I name my files?"
+                        data-fil="Paano ko dapat pangalanan ang aking mga file?"
+                    >
+                        How should I name my files?
+                    </button>
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="How does Tori organize files?"
+                        data-en="How does Tori organize files?"
+                        data-fil="Paano inaayos ng Tori ang mga file?"
+                    >
+                        How does Tori organize files?
+                    </button>
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="How do I retrieve a file?"
+                        data-en="How do I retrieve a file?"
+                        data-fil="Paano ako magre-retrieve ng file?"
+                    >
+                        How do I retrieve a file?
+                    </button>
+                    <button
+                        type="button"
+                        class="suggestion-btn"
+                        data-question="Can I upload multiple files?"
+                        data-en="Can I upload multiple files?"
+                        data-fil="Maaari ba akong mag-upload ng maraming file?"
+                    >
+                        Can I upload multiple files?
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
-<!-- =WHAT IS TORI DUMP?= -->
+<!-- =QUICK START= -->
+<section
+    class="section section-light"
+    id="quick-start"
+>
+    <div class="container">
+        <div class="text-center mb-5">
+            <div
+                class="section-label"
+                data-en="Quick Start"
+                data-fil="Mabilis na Pagsisimula"
+            >
+                Quick Start
+            </div>
+            <h2
+                class="section-title"
+                data-en="Get started in four steps"
+                data-fil="Magsimula sa apat na hakbang"
+            >
+                Get started in four steps
+            </h2>
+            <p
+                class="section-description mx-auto"
+                data-en="Tori Dump is designed to reduce manual file management and make information easier to retrieve."
+                data-fil="Ang Tori Dump ay idinisenyo upang mabawasan ang manual na file management at gawing mas madali ang retrieval ng impormasyon."
+            >
+                Tori Dump is designed to reduce manual file
+                management and make information easier to retrieve.
+            </p>
+        </div>
+        <div class="row workflow">
+            <!-- STEP 1 -->
+            <div class="col-md-3 mb-4">
+                <div class="quick-start-card">
+                    <div class="step-number">
+                        01
+                    </div>
+                    <h4
+                        data-en="Prepare Your Files"
+                        data-fil="Ihanda ang Iyong mga File"
+                    >
+                        Prepare Your Files
+                    </h4>
+                    <p
+                        data-en="Use specific and descriptive filenames so important keywords can be identified during search and organization."
+                        data-fil="Gumamit ng tiyak at descriptive na filename upang madaling matukoy ang mahahalagang keyword para sa paghahanap at pag-oorganisa."
+                    >
+                        Use specific and descriptive filenames
+                        so important keywords can be identified
+                        during search and organization.
+                    </p>
+                </div>
+            </div>
+            <!-- STEP 2 -->
+            <div class="col-md-3 mb-4">
+                <div class="quick-start-card">
+                    <div class="step-number">
+                        02
+                    </div>
+                    <h4
+                        data-en="Set Up Your Workspace"
+                        data-fil="I-set Up ang Iyong Workspace"
+                    >
+                        Set Up Your Workspace
+                    </h4>
+                    <p
+                        data-en="Establish project context so Tori can understand the workspace and the files associated with it."
+                        data-fil="Itakda ang project context upang maunawaan ni Tori ang workspace at ang mga file na kaugnay nito."
+                    >
+                        Establish project context so Tori
+                        can understand the workspace and the
+                        files associated with it.
+                    </p>
+                </div>
+            </div>
+            <!-- STEP 3 -->
+            <div class="col-md-3 mb-4">
+                <div class="quick-start-card">
+                    <div class="step-number">
+                        03
+                    </div>
+                    <h4
+                        data-en="Upload Your Files"
+                        data-fil="I-upload ang Iyong mga File"
+                    >
+                        Upload Your Files
+                    </h4>
+                    <p
+                        data-en="Drag and drop individual files or batches to trigger active ingestion and automated organization."
+                        data-fil="I-drag at i-drop ang mga file o batch upang simulan ang active ingestion at automated na pag-oorganisa."
+                    >
+                        Drag and drop individual files or
+                        batches to trigger active ingestion
+                        and automated organization.
+                    </p>
+                </div>
+            </div>
+            <!-- STEP 4 -->
+            <div class="col-md-3 mb-4">
+                <div class="quick-start-card">
+                    <div class="step-number">
+                        04
+                    </div>
+                    <h4
+                        data-en="Search & Retrieve"
+                        data-fil="Maghanap at Mag-retrieve"
+                    >
+                        Search & Retrieve
+                    </h4>
+                    <p
+                        data-en="Use meaningful keywords and contextual queries to find relevant files through AI-powered retrieval."
+                        data-fil="Gumamit ng mahahalagang keyword at contextual queries upang mahanap ang mga kaugnay na file gamit ang AI-powered retrieval."
+                    >
+                        Use meaningful keywords and contextual
+                        queries to find relevant files through
+                        AI-powered retrieval.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =WHAT IS TORI DUMP= -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title" id="whatTitle">
-            What is Tori Dump?
-        </h2>
-        <p class="section-intro" id="whatIntro">
-            Tori Dump is a core feature of the Tori Workspace
-            that automates file management.
-        </p>
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="Understand"
+                data-fil="Unawain"
+            >
+                Understand
+            </div>
+            <h2
+                class="section-title"
+                data-en="What is Tori Dump?"
+                data-fil="Ano ang Tori Dump?"
+            >
+                What is Tori Dump?
+            </h2>
+            <p
+                class="section-description"
+                data-en="Tori Dump is a core feature of the Tori Workspace that automates file management."
+                data-fil="Ang Tori Dump ay isang pangunahing feature ng Tori Workspace na nag-a-automate ng file management."
+            >
+                Tori Dump is a core feature of the Tori Workspace
+                that automates file management.
+            </p>
+        </div>
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="info-card">
-                    <h4 id="organizeTitle">
+                    <div class="info-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h4
+                        data-en="Automated File Management"
+                        data-fil="Automated na File Management"
+                    >
                         Automated File Management
                     </h4>
-                    <p id="organizeText">
+                    <p
+                        data-en="Tori Dump organizes, routes, and indexes uploaded files and stores them in project directories."
+                        data-fil="Inaayos, nire-route, at ini-index ng Tori Dump ang mga na-upload na file at ini-store ang mga ito sa project directories."
+                    >
                         Tori Dump organizes, routes, and indexes
                         uploaded files and stores them in project
                         directories.
@@ -381,58 +1315,111 @@
             </div>
             <div class="col-md-6 mb-4">
                 <div class="info-card">
-                    <h4 id="retrievalTitle">
+                    <div class="info-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4
+                        data-en="AI-Powered Retrieval"
+                        data-fil="AI-Powered na Retrieval"
+                    >
                         AI-Powered Retrieval
                     </h4>
-                    <p id="retrievalText">
-                        Tori Dump enables efficient storage and
-                        AI-powered retrieval of files.
+                    <p
+                        data-en="Tori Dump enables efficient storage and AI-powered retrieval of files."
+                        data-fil="Pinapadali ng Tori Dump ang storage at AI-powered retrieval ng mga file."
+                    >
+                        Tori Dump enables efficient storage
+                        and AI-powered retrieval of files.
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- =WHY TORI DUMP?= -->
-<section class="section bg-white">
+<!-- =WHY TORI DUMP= -->
+<section class="section section-light">
     <div class="container">
-        <h2 class="section-title" id="whyTitle">
-            Why Use Tori Dump?
-        </h2>
-        <p class="section-intro" id="whyIntro">
-            Traditional file storage can make documents difficult
-            to locate when filenames are vague and metadata is
-            overlooked.
-        </p>
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="Why It Matters"
+                data-fil="Bakit Ito Mahalaga"
+            >
+                Why It Matters
+            </div>
+            <h2
+                class="section-title"
+                data-en="Why use Tori Dump?"
+                data-fil="Bakit gamitin ang Tori Dump?"
+            >
+                Why use Tori Dump?
+            </h2>
+            <p
+                class="section-description"
+                data-en="Traditional file storage can make documents difficult to locate when filenames are vague and metadata is overlooked."
+                data-fil="Maaaring maging mahirap hanapin ang mga dokumento sa traditional file storage kapag malabo ang filename at hindi ginagamit ang metadata."
+            >
+                Traditional file storage can make documents
+                difficult to locate when filenames are vague
+                and metadata is overlooked.
+            </p>
+        </div>
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="info-card">
-                    <h4 id="problem1Title">
+                    <div class="info-icon">
+                        01
+                    </div>
+                    <h4
+                        data-en="Better File Organization"
+                        data-fil="Mas Maayos na File Organization"
+                    >
                         Better File Organization
                     </h4>
-                    <p id="problem1Text">
-                        Uploaded files can be organized and routed
-                        into project directories.
+                    <p
+                        data-en="Uploaded files can be organized and routed into project directories."
+                        data-fil="Maaaring awtomatikong maorganisa at ma-route ang mga na-upload na file sa project directories."
+                    >
+                        Uploaded files can be organized
+                        and routed into project directories.
                     </p>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="info-card">
-                    <h4 id="problem2Title">
+                    <div class="info-icon">
+                        02
+                    </div>
+                    <h4
+                        data-en="Smarter Search"
+                        data-fil="Mas Matalinong Paghahanap"
+                    >
                         Smarter Search
                     </h4>
-                    <p id="problem2Text">
-                        Tori Dump uses metadata and keyword matching
-                        to improve file retrieval.
+                    <p
+                        data-en="Tori Dump uses metadata and keyword matching to improve file retrieval."
+                        data-fil="Gumagamit ang Tori Dump ng metadata at keyword matching upang mapahusay ang file retrieval."
+                    >
+                        Tori Dump uses metadata and keyword
+                        matching to improve file retrieval.
                     </p>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="info-card">
-                    <h4 id="problem3Title">
+                    <div class="info-icon">
+                        03
+                    </div>
+                    <h4
+                        data-en="Faster Retrieval"
+                        data-fil="Mas Mabilis na Retrieval"
+                    >
                         Faster Retrieval
                     </h4>
-                    <p id="problem3Text">
+                    <p
+                        data-en="AI-powered query parsing supports contextual search and direct record retrieval."
+                        data-fil="Sinusuportahan ng AI-powered query parsing ang contextual search at direktang retrieval ng mga record."
+                    >
                         AI-powered query parsing supports contextual
                         search and direct record retrieval.
                     </p>
@@ -441,189 +1428,312 @@
         </div>
     </div>
 </section>
-<!-- =BEFORE YOU UPLOAD= -->
+<!-- =FILE NAMING= -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title" id="namingTitle">
-            Before You Upload: Name Your Files Properly
-        </h2>
-        <p class="section-intro" id="namingIntro">
-            Descriptive filenames help Tori Dump identify useful
-            search tokens and improve retrieval.
-        </p>
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="Before You Upload"
+                data-fil="Bago Mag-upload"
+            >
+                Before You Upload
+            </div>
+            <h2
+                class="section-title"
+                data-en="Name your files properly"
+                data-fil="Pangalanan nang maayos ang iyong mga file"
+            >
+                Name your files properly
+            </h2>
+            <p
+                class="section-description"
+                data-en="Descriptive filenames give Tori useful search tokens and help automated organization."
+                data-fil="Ang descriptive filenames ay nagbibigay kay Tori ng mahahalagang search token at tumutulong sa automated na pag-oorganisa."
+            >
+                Descriptive filenames give Tori useful search
+                tokens and help automated organization.
+            </p>
+        </div>
         <div class="row">
+            <!-- BAD -->
             <div class="col-md-6 mb-4">
                 <div class="info-card">
-                    <h4 id="badNamingTitle">
-                        Avoid Vague Filenames
+                    <h4
+                        data-en="Avoid vague filenames"
+                        data-fil="Iwasan ang malalabong filename"
+                    >
+                        Avoid vague filenames
                     </h4>
-                    <div class="file-example mb-3">
+                    <div class="file-example bad-example mb-3">
                         receipt.pdf<br>
                         report.xlsx<br>
                         tax_v2.pdf
                     </div>
-                    <p id="badNamingText">
+                    <p
+                        data-en="Generic filenames provide fewer useful keywords for searching and indexing."
+                        data-fil="Ang generic na filename ay nagbibigay ng mas kaunting kapaki-pakinabang na keyword para sa paghahanap at indexing."
+                    >
                         Generic filenames provide fewer useful
                         keywords for searching and indexing.
                     </p>
                 </div>
             </div>
+            <!-- GOOD -->
             <div class="col-md-6 mb-4">
                 <div class="info-card">
-                    <h4 id="goodNamingTitle">
-                        Use Specific, Descriptive Names
+                    <h4
+                        data-en="Use specific filenames"
+                        data-fil="Gumamit ng tiyak na filename"
+                    >
+                        Use specific filenames
                     </h4>
-                    <div class="file-example mb-3">
+                    <div class="file-example good-example mb-3">
                         tax_and_compliance_q3_2026_BIR_VAT_Return_Filing_Receipt.pdf
                     </div>
-                    <p id="goodNamingText">
-                        Include meaningful keywords such as the
-                        subject, period, year, agency, document type,
-                        or other useful identifiers.
+                    <p
+                        data-en="Useful filenames contain high-signal keywords such as the topic, period, year, agency, document type, and purpose."
+                        data-fil="Ang kapaki-pakinabang na filename ay naglalaman ng mahahalagang keyword tulad ng paksa, panahon, taon, ahensya, uri ng dokumento, at layunin."
+                    >
+                        Useful filenames contain high-signal keywords
+                        such as the topic, period, year, agency,
+                        document type, and purpose.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="step-card">
-            <h4 id="folderRuleTitle">
-                Golden Rule: Match File Names to Folder Names
+        <!-- GOLDEN RULES -->
+        <div class="row mt-2">
+            <div class="col-md-6 mb-4">
+                <div class="rule-box">
+                    <strong
+                        data-en="Golden Rule 1: Be Specific & Descriptive"
+                        data-fil="Golden Rule 1: Maging Tiyak at Descriptive"
+                    >
+                        Golden Rule 1: Be Specific & Descriptive
+                    </strong>
+                    <p
+                        data-en="Include meaningful terms that describe what the file contains."
+                        data-fil="Isama ang mahahalagang termino na naglalarawan kung ano ang nilalaman ng file."
+                    >
+                        Include meaningful terms that describe
+                        what the file contains.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="rule-box">
+                    <strong
+                        data-en="Golden Rule 2: Match File Tokens to Folder Name"
+                        data-fil="Golden Rule 2: I-match ang File Tokens sa Folder Name"
+                    >
+                        Golden Rule 2: Match File Tokens to Folder Name
+                    </strong>
+                    <p
+                        data-en="Using words that match the target folder can help Tori route the file to the appropriate directory."
+                        data-fil="Ang paggamit ng mga salitang tumutugma sa target folder ay makatutulong kay Tori na i-route ang file sa tamang directory."
+                    >
+                        Using words that match the target folder
+                        can help Tori route the file to the
+                        appropriate directory.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="info-card mt-2">
+            <h4
+                data-en="Example"
+                data-fil="Halimbawa"
+            >
+                Example
             </h4>
-            <p id="folderRuleText">
-                Matching meaningful terms in the filename with the
-                target folder can support automated routing.
+            <p
+                data-en="If the target folder is Tax_and_Compliance, a filename containing matching terms such as tax_and_compliance can help Tori identify the appropriate destination."
+                data-fil="Kung ang target folder ay Tax_and_Compliance, ang filename na may katugmang termino gaya ng tax_and_compliance ay makatutulong kay Tori na matukoy ang tamang destination."
+            >
+                If the target folder is Tax_and_Compliance,
+                a filename containing matching terms such as
+                tax_and_compliance can help Tori identify
+                the appropriate destination.
             </p>
-            <strong>Folder:</strong>
-            <div class="file-example mt-2 mb-3">
-                Tax_and_Compliance
-            </div>
-            <strong>File:</strong>
-            <div class="file-example mt-2">
-                tax_and_compliance_q3_2026_BIR_VAT_Return_Filing_Receipt.pdf
-            </div>
         </div>
     </div>
 </section>
-<section id="steps" class="section-light">
+<!-- =HOW TO USE= -->
+<section
+    class="section section-light"
+    id="guide"
+>
     <div class="container">
-        <div class="section-heading text-center">
-            <span class="section-label">
-                WORKFLOW
-            </span>
-            <h2 id="stepsTitle">
-                How to Use Tori Dump
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="How to Use"
+                data-fil="Paano Gamitin"
+            >
+                How to Use
+            </div>
+            <h2
+                class="section-title"
+                data-en="The Tori Dump workflow"
+                data-fil="Ang Tori Dump workflow"
+            >
+                The Tori Dump workflow
             </h2>
-            <p id="stepsIntro">
-                Follow these four steps to organize, upload, and retrieve
-                files efficiently.
+            <p
+                class="section-description"
+                data-en="Follow these four steps to prepare, upload, organize, and retrieve your files."
+                data-fil="Sundin ang apat na hakbang upang ihanda, i-upload, ayusin, at i-retrieve ang iyong mga file."
+            >
+                Follow these four steps to prepare, upload,
+                organize, and retrieve your files.
             </p>
         </div>
-        <div class="row mt-5">
+        <div class="row">
             <!-- STEP 1 -->
             <div class="col-md-6 mb-4">
-                <div class="step-card">
-                    <div class="step-number">
+                <div class="info-card">
+                    <div class="info-icon">
                         01
                     </div>
-                    <div class="step-content">
-                        <h4 id="step1Title">
-                            Prepare Your Files
-                        </h4>
-                        <p id="step1Text">
-                            Use clear and descriptive file names before
-                            uploading your documents. Include important
-                            keywords such as the document type, period,
-                            year, office, or transaction.
+                    <h4
+                        data-en="Prepare Your Files"
+                        data-fil="Ihanda ang Iyong mga File"
+                    >
+                        Prepare Your Files
+                    </h4>
+                    <p
+                        data-en="Use specific, descriptive filenames containing useful keywords."
+                        data-fil="Gumamit ng tiyak at descriptive na filename na naglalaman ng mahahalagang keyword."
+                    >
+                        Use specific, descriptive filenames
+                        containing useful keywords.
+                    </p>
+                    <div class="rule-box">
+                        <strong
+                            data-en="Why this matters"
+                            data-fil="Bakit ito mahalaga"
+                        >
+                            Why this matters
+                        </strong>
+                        <p
+                            data-en="Meaningful filename tokens can support indexing, organization, and retrieval."
+                            data-fil="Ang makabuluhang filename token ay makatutulong sa indexing, organization, at retrieval."
+                        >
+                            Meaningful filename tokens can support
+                            indexing, organization, and retrieval.
                         </p>
-                        <div class="step-example">
-                            <strong>Example</strong>
-                            <div class="bad-example">
-                                ❌ receipt.pdf
-                            </div>
-                            <div class="good-example">
-                                ✓ tax_and_compliance_q3_2026_BIR_VAT_Return_Filing_Receipt.pdf
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- STEP 2 -->
             <div class="col-md-6 mb-4">
-                <div class="step-card">
-                    <div class="step-number">
+                <div class="info-card">
+                    <div class="info-icon">
                         02
                     </div>
-                    <div class="step-content">
-                        <h4 id="step2Title">
-                            Set Up Your Workspace
-                        </h4>
-                        <p id="step2Text">
-                            Use your Tori Workspace and its project
-                            directories to provide the appropriate
-                            context for your files. This helps Tori
-                            understand where files belong.
+                    <h4
+                        data-en="Set Up Your Workspace"
+                        data-fil="I-set Up ang Iyong Workspace"
+                    >
+                        Set Up Your Workspace
+                    </h4>
+                    <p
+                        data-en="Provide the project context Tori needs to understand where uploaded information belongs."
+                        data-fil="Ibigay ang project context na kailangan ni Tori upang maunawaan kung saan kabilang ang mga na-upload na impormasyon."
+                    >
+                        Provide the project context Tori needs
+                        to understand where uploaded information belongs.
+                    </p>
+                    <div class="rule-box">
+                        <strong
+                            data-en="Automation"
+                            data-fil="Automation"
+                        >
+                            Automation
+                        </strong>
+                        <p
+                            data-en="Project context supports automated routing and organization of uploaded files."
+                            data-fil="Ang project context ay tumutulong sa automated routing at organization ng mga na-upload na file."
+                        >
+                            Project context supports automated
+                            routing and organization of uploaded files.
                         </p>
-                        <div class="step-highlight">
-                            <strong>Why this matters</strong>
-                            <p>
-                                Tori uses file names and workspace context
-                                to support automated file routing.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- STEP 3 -->
             <div class="col-md-6 mb-4">
-                <div class="step-card">
-                    <div class="step-number">
+                <div class="info-card">
+                    <div class="info-icon">
                         03
                     </div>
-                    <div class="step-content">
-                        <h4 id="step3Title">
-                            Upload Your Files
-                        </h4>
-                        <p id="step3Text">
-                            Drag and drop your files into Tori Dump.
-                            Batch uploading triggers the active ingestion
-                            process, allowing uploaded files to be
-                            organized and indexed.
+                    <h4
+                        data-en="Upload Your Files"
+                        data-fil="I-upload ang Iyong mga File"
+                    >
+                        Upload Your Files
+                    </h4>
+                    <p
+                        data-en="Drag and drop individual files or batches to trigger active ingestion."
+                        data-fil="I-drag at i-drop ang indibidwal na file o batch upang simulan ang active ingestion."
+                    >
+                        Drag and drop individual files or batches
+                        to trigger active ingestion.
+                    </p>
+                    <div class="rule-box">
+
+                        <strong
+                            data-en="Automation"
+                            data-fil="Automation"
+                        >
+                            Automation
+                        </strong>
+                        <p
+                            data-en="Uploaded files can be organized, routed, and indexed as part of the ingestion process."
+                            data-fil="Maaaring maorganisa, ma-route, at ma-index ang mga na-upload na file bilang bahagi ng ingestion process."
+                        >
+                            Uploaded files can be organized,
+                            routed, and indexed as part of the
+                            ingestion process.
                         </p>
-                        <div class="step-highlight">
-                            <strong>Automation</strong>
-                            <p>
-                                Tori Dump helps reduce manual file
-                                organization by automatically routing
-                                files to appropriate project directories.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- STEP 4 -->
             <div class="col-md-6 mb-4">
-                <div class="step-card">
-                    <div class="step-number">
+                <div class="info-card">
+                    <div class="info-icon">
                         04
                     </div>
-                    <div class="step-content">
-                        <h4 id="step4Title">
-                            Search and Retrieve
-                        </h4>
-                        <p id="step4Text">
-                            Search for documents using meaningful keywords
-                            or contextual queries. Tori's retrieval system
-                            uses metadata and fuzzy matching to help locate
-                            relevant files.
+                    <h4
+                        data-en="Search & Retrieve"
+                        data-fil="Maghanap at Mag-retrieve"
+                    >
+                        Search & Retrieve
+                    </h4>
+                    <p
+                        data-en="Use meaningful keywords or contextual queries to locate relevant files."
+                        data-fil="Gumamit ng mahahalagang keyword o contextual query upang mahanap ang mga kaugnay na file."
+                    >
+                        Use meaningful keywords or contextual
+                        queries to locate relevant files.
+                    </p>
+                    <div class="rule-box">
+                        <strong
+                            data-en="AI-Powered Retrieval"
+                            data-fil="AI-Powered na Retrieval"
+                        >
+                            AI-Powered Retrieval
+                        </strong>
+                        <p
+                            data-en="Tori can use metadata, keyword matching, and fuzzy matching to support contextual retrieval."
+                            data-fil="Maaaring gamitin ni Tori ang metadata, keyword matching, at fuzzy matching upang suportahan ang contextual retrieval."
+                        >
+                            Tori can use metadata, keyword matching,
+                            and fuzzy matching to support contextual
+                            retrieval.
                         </p>
-                        <div class="step-highlight">
-                            <strong>AI-powered retrieval</strong>
-                            <p>
-                                Even when a search contains short names
-                                or minor typing errors, fuzzy token
-                                matching can help identify the relevant
-                                file.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -631,65 +1741,92 @@
     </div>
 </section>
 <!-- =HOW TORI DUMP WORKS= -->
-<section class="section bg-white">
+<section class="section">
     <div class="container">
-        <h2 class="section-title" id="worksTitle">
-            How Tori Dump Works
-        </h2>
-        <p class="section-intro">
-            Tori Dump combines automated file organization,
-            metadata extraction, and AI-powered retrieval to
-            make files easier to manage and find.
-        </p>
-        <div class="row mt-5">
-            <!-- AUTOMATED ORGANIZATION -->
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="Behind the Workflow"
+                data-fil="Paano Ito Gumagana"
+            >
+                Behind the Workflow
+            </div>
+            <h2
+                class="section-title"
+                data-en="How Tori Dump works"
+                data-fil="Paano gumagana ang Tori Dump"
+            >
+                How Tori Dump works
+            </h2>
+            <p
+                class="section-description"
+                data-en="Tori Dump combines automated organization, metadata extraction, and AI-powered retrieval."
+                data-fil="Pinagsasama ng Tori Dump ang automated organization, metadata extraction, at AI-powered retrieval."
+            >
+                Tori Dump combines automated organization,
+                metadata extraction, and AI-powered retrieval.
+            </p>
+        </div>
+        <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="info-card">
                     <div class="info-icon">
-                        01
+                        <i class="fas fa-folder"></i>
                     </div>
-                    <h4 id="works1Title">
+                    <h4
+                        data-en="Automated Organization"
+                        data-fil="Automated na Organization"
+                    >
                         Automated Organization
                     </h4>
-                    <p id="works1Text">
-                    <p>
-                        Tori Dump organizes and routes uploaded files
-                        into project directories based on file names
-                        and workspace context.
+                    <p
+                        data-en="Tori analyzes file information and project context to help organize and route uploaded files into project directories."
+                        data-fil="Sinusuri ni Tori ang file information at project context upang makatulong sa pag-organisa at pag-route ng mga na-upload na file sa project directories."
+                    >
+                        Tori analyzes file information and project
+                        context to help organize and route uploaded
+                        files into project directories.
                     </p>
                 </div>
             </div>
-            <!-- METADATA -->
             <div class="col-md-4 mb-4">
                 <div class="info-card">
                     <div class="info-icon">
-                        02
+                        <i class="fas fa-database"></i>
                     </div>
-                    <h4 id="works2Title">
+                    <h4
+                        data-en="Metadata Extraction"
+                        data-fil="Metadata Extraction"
+                    >
                         Metadata Extraction
                     </h4>
-                    <p id="works2Text">
-                    <p>
-                        The system extracts useful information such as
-                        author, title, and timestamps and uses this
-                        information as part of the file's metadata.
+                    <p
+                        data-en="The system can extract useful information such as author, title, and timestamps into metadata."
+                        data-fil="Maaaring kumuha ang system ng kapaki-pakinabang na impormasyon gaya ng author, title, at timestamps bilang metadata."
+                    >
+                        The system can extract useful information
+                        such as author, title, and timestamps into metadata.
                     </p>
                 </div>
             </div>
-            <!-- AI RETRIEVAL -->
             <div class="col-md-4 mb-4">
                 <div class="info-card">
                     <div class="info-icon">
-                        03
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h4 id="works3Title">
+                    <h4
+                        data-en="AI-Powered Retrieval"
+                        data-fil="AI-Powered na Retrieval"
+                    >
                         AI-Powered Retrieval
                     </h4>
-                    <p id="works3Text">
-                    <p>
-                        Tori Dump uses fuzzy token matching to help
-                        identify relevant files, even when a search
-                        contains short names or minor typing errors.
+                    <p
+                        data-en="Fuzzy token scoring and query parsing can help match files even when searches contain typos or short names."
+                        data-fil="Ang fuzzy token scoring at query parsing ay makatutulong sa pagtutugma ng mga file kahit may typo o maikling search terms."
+                    >
+                        Fuzzy token scoring and query parsing can
+                        help match files even when searches contain
+                        typos or short names.
                     </p>
                 </div>
             </div>
@@ -697,16 +1834,33 @@
     </div>
 </section>
 <!-- =GOVERNMENT USE CASES= -->
-<section class="section bg-white">
+<section class="section section-light">
     <div class="container">
-        <h2 class="section-title" id="governmentTitle">
-            Tori Dump for Government Work
-        </h2>
-        <p class="section-intro" id="governmentIntro">
-            Tori Dump can support government information and
-            records management workflows where organized files,
-            efficient retrieval, and reliable records access are important.
-        </p>
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="For Government Work"
+                data-fil="Para sa Government Work"
+            >
+                For Government Work
+            </div>
+            <h2
+                class="section-title"
+                data-en="Tori Dump for government work"
+                data-fil="Tori Dump para sa government work"
+            >
+                Tori Dump for government work
+            </h2>
+            <p
+                class="section-description"
+                data-en="Organized information and efficient retrieval can support government records management, operational work, and information sharing."
+                data-fil="Ang organisadong impormasyon at mahusay na retrieval ay maaaring makatulong sa records management, operational work, at information sharing ng pamahalaan."
+            >
+                Organized information and efficient retrieval can
+                support government records management, operational
+                work, and information sharing.
+            </p>
+        </div>
         <div class="row">
             <!-- DRRM -->
             <div class="col-md-4 mb-4">
@@ -714,16 +1868,26 @@
                     <div class="info-icon">
                         01
                     </div>
-                    <h4>
+                    <h4
+                        data-en="DRRM Information"
+                        data-fil="DRRM Information"
+                    >
                         DRRM Information
                     </h4>
-                    <p>
+                    <p
+                        data-en="Support centralized disaster risk reduction and management information systems and faster retrieval and sharing of relevant records during crisis situations."
+                        data-fil="Suportahan ang centralized disaster risk reduction and management information systems at mas mabilis na retrieval at sharing ng mahahalagang record sa panahon ng krisis."
+                    >
                         Support centralized disaster risk reduction
-                        and management information systems and enable
-                        faster retrieval and sharing of relevant records
+                        and management information systems and faster
+                        retrieval and sharing of relevant records
                         during crisis situations.
                     </p>
-                    <span class="use-case-note">
+                    <span
+                        class="use-case-note"
+                        data-en="Disaster preparedness • Response • Information sharing"
+                        data-fil="Disaster preparedness • Response • Information sharing"
+                    >
                         Disaster preparedness • Response • Information sharing
                     </span>
                 </div>
@@ -734,15 +1898,25 @@
                     <div class="info-icon">
                         02
                     </div>
-                    <h4>
+                    <h4
+                        data-en="Records Management"
+                        data-fil="Records Management"
+                    >
                         Records Management
                     </h4>
-                    <p>
-                        Maintain organized records and support a
-                        traceable records trail for operational,
+                    <p
+                        data-en="Maintain organized records and support a traceable records trail for operational, monitoring, and audit-related purposes."
+                        data-fil="Panatilihing organisado ang mga record at suportahan ang traceable records trail para sa operational, monitoring, at audit-related purposes."
+                    >
+                        Maintain organized records and support
+                        a traceable records trail for operational,
                         monitoring, and audit-related purposes.
                     </p>
-                    <span class="use-case-note">
+                    <span
+                        class="use-case-note"
+                        data-en="Records trail • Retrieval • Accountability"
+                        data-fil="Records trail • Retrieval • Accountability"
+                    >
                         Records trail • Retrieval • Accountability
                     </span>
                 </div>
@@ -753,27 +1927,41 @@
                     <div class="info-icon">
                         03
                     </div>
-                    <h4>
+                    <h4
+                        data-en="Government Operations"
+                        data-fil="Government Operations"
+                    >
                         Government Operations
                     </h4>
-                    <p>
-                        Help improve operational efficiency,
-                        accountability, transparency, and continuity
-                        of government services through effective
-                        records management.
+                    <p
+                        data-en="Support operational efficiency, accountability, transparency, and continuity of government services through effective records management."
+                        data-fil="Suportahan ang operational efficiency, accountability, transparency, at continuity ng government services sa pamamagitan ng effective records management."
+                    >
+                        Support operational efficiency, accountability,
+                        transparency, and continuity of government
+                        services through effective records management.
                     </p>
-                    <span class="use-case-note">
+                    <span
+                        class="use-case-note"
+                        data-en="Efficiency • Transparency • Continuity"
+                        data-fil="Efficiency • Transparency • Continuity"
+                    >
                         Efficiency • Transparency • Continuity
                     </span>
                 </div>
             </div>
         </div>
-        <!-- GOVERNMENT NOTE -->
-        <div class="government-note mt-4">
-            <strong>
+        <div class="government-note mt-3">
+            <strong
+                data-en="Why this matters"
+                data-fil="Bakit ito mahalaga"
+            >
                 Why this matters
             </strong>
-            <p>
+            <p
+                data-en="For government offices, organized and accessible information can support faster decision-making, accountability, and continuity of services."
+                data-fil="Para sa mga tanggapan ng pamahalaan, ang organisado at madaling ma-access na impormasyon ay maaaring makatulong sa mas mabilis na decision-making, accountability, at continuity ng serbisyo."
+            >
                 For government offices, organized and accessible
                 information can support faster decision-making,
                 accountability, and continuity of services.
@@ -784,217 +1972,441 @@
 <!-- =QUICK TIPS= -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title" id="tipsTitle">
-            Quick Tips
-        </h2>
-        <div class="info-card">
-            <ul id="tipsList">
-                <li>Use specific and descriptive filenames.</li>
-                <li>Include meaningful keywords in filenames.</li>
-                <li>Match filename terms with folder names.</li>
-                <li>Use batch uploads when appropriate.</li>
-                <li>Use meaningful queries when searching for records.</li>
-            </ul>
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="Quick Tips"
+                data-fil="Mga Mabilis na Tip"
+            >
+                Quick Tips
+            </div>
+            <h2
+                class="section-title"
+                data-en="Get better results from Tori Dump"
+                data-fil="Mas mahusay na paggamit ng Tori Dump"
+            >
+                Get better results from Tori Dump
+            </h2>
+            <p
+                class="section-description"
+                data-en="A few simple practices can make files easier to organize and retrieve."
+                data-fil="Makakatulong ang ilang simpleng practice upang mas madaling maorganisa at ma-retrieve ang mga file."
+            >
+                A few simple practices can make files easier
+                to organize and retrieve.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="info-card">
+                    <ul class="tip-list">
+                        <li
+                            data-en="Use specific and descriptive filenames."
+                            data-fil="Gumamit ng tiyak at descriptive na filename."
+                        >
+                            Use specific and descriptive filenames.
+                        </li>
+                        <li
+                            data-en="Include useful keywords such as project, period, year, agency, and document type."
+                            data-fil="Isama ang mahahalagang keyword gaya ng project, period, year, agency, at document type."
+                        >
+                            Include useful keywords such as project,
+                            period, year, agency, and document type.
+                        </li>
+                        <li
+                            data-en="Match important filename tokens with relevant folder names when appropriate."
+                            data-fil="I-match ang mahahalagang filename token sa relevant folder names kung naaangkop."
+                        >
+                            Match important filename tokens with
+                            relevant folder names when appropriate.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="info-card">
+                    <ul class="tip-list">
+                        <li
+                            data-en="Use contextual search terms rather than relying only on exact filenames."
+                            data-fil="Gumamit ng contextual search terms sa halip na umasa lamang sa eksaktong filename."
+                        >
+                            Use contextual search terms rather than
+                            relying only on exact filenames.
+                        </li>
+                        <li
+                            data-en="Do not worry if a search contains a typo; fuzzy matching can help identify relevant files."
+                            data-fil="Huwag mag-alala kung may typo sa search; maaaring makatulong ang fuzzy matching sa paghahanap ng relevant files."
+                        >
+                            Do not worry if a search contains a typo;
+                            fuzzy matching can help identify relevant files.
+                        </li>
+                        <li
+                            data-en="Keep project information organized so files remain easier to retrieve."
+                            data-fil="Panatilihing organisado ang project information upang mas madaling ma-retrieve ang mga file."
+                        >
+                            Keep project information organized so files
+                            remain easier to retrieve.
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 <!-- =FAQ= -->
-<section class="section bg-white">
+<section
+    class="section section-light"
+    id="faq"
+>
     <div class="container">
-        <h2 class="section-title">
-            Frequently Asked Questions
-        </h2>
-        <div id="faqAccordion">
+        <div class="mb-5">
+            <div
+                class="section-label"
+                data-en="Frequently Asked Questions"
+                data-fil="Mga Madalas Itanong"
+            >
+                Frequently Asked Questions
+            </div>
+            <h2
+                class="section-title"
+                data-en="Tori Dump FAQ"
+                data-fil="Tori Dump FAQ"
+            >
+                Tori Dump FAQ
+            </h2>
+            <p
+                class="section-description"
+                data-en="Find quick answers to common questions about Tori Dump."
+                data-fil="Hanapin ang mabilis na sagot sa mga karaniwang tanong tungkol sa Tori Dump."
+            >
+                Find quick answers to common questions
+                about Tori Dump.
+            </p>
+        </div>
+        <div
+            class="accordion"
+            id="faqAccordion"
+        >
             <!-- FAQ 1 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq1"
-                    >
-                        What is Tori Dump?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqOneHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqOne"
+                            aria-expanded="true"
+                            aria-controls="faqOne"
+                        >
+                            <span
+                                data-en="What is Tori Dump?"
+                                data-fil="Ano ang Tori Dump?"
+                            >
+                                What is Tori Dump?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq1"
-                    class="collapse"
+                    id="faqOne"
+                    class="collapse show"
+                    aria-labelledby="faqOneHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        Tori Dump is an automated file management
-                        system that organizes, routes, indexes,
-                        and stores uploaded files while enabling
-                        AI-powered retrieval.
+                    <div
+                        class="card-body"
+                        data-en="Tori Dump is a Tori Workspace feature that automates file management by organizing, routing, indexing, and supporting retrieval of uploaded files."
+                        data-fil="Ang Tori Dump ay isang feature ng Tori Workspace na nag-a-automate ng file management sa pamamagitan ng pag-oorganisa, pag-route, pag-index, at pagsuporta sa retrieval ng mga na-upload na file."
+                    >
+                        Tori Dump is a Tori Workspace feature that
+                        automates file management by organizing,
+                        routing, indexing, and supporting retrieval
+                        of uploaded files.
                     </div>
                 </div>
             </div>
             <!-- FAQ 2 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq2"
-                    >
-                        Why should I use descriptive filenames?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqTwoHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqTwo"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="Why should I use descriptive filenames?"
+                                data-fil="Bakit kailangan ng descriptive filenames?"
+                            >
+                                Why should I use descriptive filenames?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq2"
+                    id="faqTwo"
                     class="collapse"
+                    aria-labelledby="faqTwoHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        Descriptive filenames provide high-signal
-                        keywords that can help with automated routing
-                        and file retrieval. Include useful details such
-                        as the document type, period, year, office,
-                        or transaction.
+                    <div
+                        class="card-body"
+                        data-en="Descriptive filenames contain useful search tokens that can support indexing, organization, and retrieval."
+                        data-fil="Ang descriptive filenames ay naglalaman ng mahahalagang search token na makatutulong sa indexing, organization, at retrieval."
+                    >
+                        Descriptive filenames contain useful search
+                        tokens that can support indexing, organization,
+                        and retrieval.
                     </div>
                 </div>
             </div>
             <!-- FAQ 3 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq3"
-                    >
-                        Can I upload multiple files?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqThreeHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqThree"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="Can I upload multiple files?"
+                                data-fil="Maaari ba akong mag-upload ng maraming file?"
+                            >
+                                Can I upload multiple files?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq3"
+                    id="faqThree"
                     class="collapse"
+                    aria-labelledby="faqThreeHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
+                    <div
+                        class="card-body"
+                        data-en="Yes. The Tori Dump workflow supports batch drag-and-drop uploads that trigger active ingestion."
+                        data-fil="Oo. Sinusuportahan ng Tori Dump workflow ang batch drag-and-drop uploads na nagsisimula sa active ingestion."
+                    >
                         Yes. The Tori Dump workflow supports batch
-                        drag-and-drop uploads, which trigger the
-                        active ingestion process.
+                        drag-and-drop uploads that trigger active ingestion.
                     </div>
                 </div>
             </div>
             <!-- FAQ 4 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq4"
-                    >
-                        How does Tori Dump organize my files?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqFourHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqFour"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="How does Tori organize files?"
+                                data-fil="Paano inaayos ng Tori ang mga file?"
+                            >
+                                How does Tori organize files?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq4"
+                    id="faqFour"
                     class="collapse"
+                    aria-labelledby="faqFourHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        File names and workspace context help support
-                        automated routing to appropriate project
-                        directories. Matching file tokens to folder
-                        names can improve routing confidence.
+                    <div
+                        class="card-body"
+                        data-en="Tori uses file information, project context, and filename tokens to support automated routing and organization into project directories."
+                        data-fil="Gumagamit si Tori ng file information, project context, at filename token upang suportahan ang automated routing at organization sa project directories."
+                    >
+                        Tori uses file information, project context,
+                        and filename tokens to support automated routing
+                        and organization into project directories.
                     </div>
                 </div>
             </div>
             <!-- FAQ 5 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq5"
-                    >
-                        How does AI-powered retrieval work?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqFiveHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqFive"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="How does AI-powered retrieval work?"
+                                data-fil="Paano gumagana ang AI-powered retrieval?"
+                            >
+                                How does AI-powered retrieval work?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq5"
+                    id="faqFive"
                     class="collapse"
+                    aria-labelledby="faqFiveHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        Tori Dump uses metadata and fuzzy token
-                        matching to identify relevant files. This
-                        can help retrieve files even when a search
-                        uses a short name or contains minor typing
-                        errors.
+                    <div
+                        class="card-body"
+                        data-en="Tori Dump can use metadata, query parsing, keyword matching, and fuzzy token scoring to identify relevant files, including searches with typos or short names."
+                        data-fil="Maaaring gamitin ng Tori Dump ang metadata, query parsing, keyword matching, at fuzzy token scoring upang matukoy ang relevant files, kabilang ang searches na may typo o maiikling pangalan."
+                    >
+                        Tori Dump can use metadata, query parsing,
+                        keyword matching, and fuzzy token scoring
+                        to identify relevant files, including searches
+                        with typos or short names.
                     </div>
                 </div>
             </div>
             <!-- FAQ 6 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq6"
-                    >
-                        What information can be used as metadata?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqSixHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqSix"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="What information can be used as metadata?"
+                                data-fil="Anong impormasyon ang maaaring maging metadata?"
+                            >
+                                What information can be used as metadata?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq6"
+                    id="faqSix"
                     class="collapse"
+                    aria-labelledby="faqSixHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        The Tori Dump material identifies information
-                        such as author, title, and timestamps as
-                        metadata that can be extracted from files.
+                    <div
+                        class="card-body"
+                        data-en="The Tori Dump material describes metadata extraction that can pull information such as author, title, and timestamps."
+                        data-fil="Ayon sa Tori Dump material, maaaring kumuha ng metadata gaya ng author, title, at timestamps."
+                    >
+                        The Tori Dump material describes metadata
+                        extraction that can pull information such as
+                        author, title, and timestamps.
                     </div>
                 </div>
             </div>
             <!-- FAQ 7 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq7"
-                    >
-                        What if I make a typo when searching?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqSevenHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqSeven"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="What if I make a typo when searching?"
+                                data-fil="Paano kung may typo ako sa paghahanap?"
+                            >
+                                What if I make a typo when searching?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq7"
+                    id="faqSeven"
                     class="collapse"
+                    aria-labelledby="faqSevenHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        Fuzzy token matching can help identify relevant
-                        files even when search terms contain minor
-                        typing errors.
+                    <div
+                        class="card-body"
+                        data-en="Fuzzy token scoring can help match files even when search terms contain typos or abbreviated names."
+                        data-fil="Makakatulong ang fuzzy token scoring sa pagtutugma ng file kahit may typo o pinaikling pangalan sa search terms."
+                    >
+                        Fuzzy token scoring can help match files
+                        even when search terms contain typos or
+                        abbreviated names.
                     </div>
                 </div>
             </div>
             <!-- FAQ 8 -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <button
-                        class="btn btn-link"
-                        data-toggle="collapse"
-                        data-target="#faq8"
-                    >
-                        Can Tori Dump support government work?
-                    </button>
+            <div class="card">
+                <div
+                    class="card-header"
+                    id="faqEightHeader"
+                >
+                    <h5 class="mb-0">
+                        <button
+                            class="btn btn-link collapsed"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#faqEight"
+                            aria-expanded="false"
+                        >
+                            <span
+                                data-en="Can Tori Dump support government work?"
+                                data-fil="Maaari bang gamitin ang Tori Dump sa government work?"
+                            >
+                                Can Tori Dump support government work?
+                            </span>
+                        </button>
+                    </h5>
                 </div>
                 <div
-                    id="faq8"
+                    id="faqEight"
                     class="collapse"
+                    aria-labelledby="faqEightHeader"
                     data-parent="#faqAccordion"
                 >
-                    <div class="card-body">
-                        Tori Dump can support government information
-                        and records management workflows, including
-                        DRRM information management, records trails,
-                        information retrieval, accountability,
-                        transparency, and continuity of government
-                        services.
+                    <div
+                        class="card-body"
+                        data-en="Tori Dump can support organized records management, information retrieval, information sharing, and continuity-oriented government workflows."
+                        data-fil="Maaaring suportahan ng Tori Dump ang organized records management, information retrieval, information sharing, at continuity-oriented government workflows."
+                    >
+                        Tori Dump can support organized records
+                        management, information retrieval,
+                        information sharing, and continuity-oriented
+                        government workflows.
                     </div>
                 </div>
             </div>
@@ -1004,373 +2416,285 @@
 <!-- =FOOTER= -->
 <footer class="footer">
     <div class="container">
-        <p class="mb-0">
-            Tori Dump — How to Use Guide
-        </p>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="footer-brand">
+                    TORI <span>NETWORK</span>
+                </div>
+                <small
+                    data-en="Tori Dump · Interactive User Guide"
+                    data-fil="Tori Dump · Interactive User Guide"
+                >
+                    Tori Dump · Interactive User Guide
+                </small>
+            </div>
+            <div class="col-md-6 text-md-right mt-3 mt-md-0">
+                <small
+                    data-en="Built for Tori Workspace users"
+                    data-fil="Ginawa para sa mga gumagamit ng Tori Workspace"
+                >
+                    Built for Tori Workspace users
+                </small>
+            </div>
+        </div>
     </div>
 </footer>
-<!-- =JAVASCRIPT= -->
-<script>
-    function setLanguage(language) {
-        if (language === "en") {
-            document.documentElement.lang = "en";
-            document.getElementById("heroSubtitle").textContent =
-                "How to Use Tori Dump";
-            document.getElementById("heroDescription").textContent =
-                "A practical guide to smarter file management, organization, and AI-powered retrieval.";
-            document.getElementById("whatTitle").textContent =
-                "What is Tori Dump?";
-            document.getElementById("whatIntro").textContent =
-                "Tori Dump is a core feature of the Tori Workspace that automates file management.";
-            document.getElementById("organizeTitle").textContent =
-                "Automated File Management";
-            document.getElementById("organizeText").textContent =
-                "Tori Dump organizes, routes, and indexes uploaded files and stores them in project directories.";
-            document.getElementById("retrievalTitle").textContent =
-                "AI-Powered Retrieval";
-            document.getElementById("retrievalText").textContent =
-                "Tori Dump enables efficient storage and AI-powered retrieval of files.";
-        }
-        if (language === "fil") {
-            document.documentElement.lang = "fil";
-            document.getElementById("heroSubtitle").textContent =
-                "Paano Gamitin ang Tori Dump";
-            document.getElementById("heroDescription").textContent =
-                "Isang praktikal na gabay para sa mas maayos na pamamahala, pag-oorganisa, at AI-powered na paghahanap ng mga file.";
-            document.getElementById("whatTitle").textContent =
-                "Ano ang Tori Dump?";
-            document.getElementById("whatIntro").textContent =
-                "Ang Tori Dump ay isang pangunahing feature ng Tori Workspace na nag-o-automate ng file management.";
-            document.getElementById("organizeTitle").textContent =
-                "Automated na File Management";
-            document.getElementById("organizeText").textContent =
-                "Inaayos, niruruta, at ini-index ng Tori Dump ang mga na-upload na file at inilalagay ang mga ito sa project directories.";
-            document.getElementById("retrievalTitle").textContent =
-                "AI-Powered na Retrieval";
-            document.getElementById("retrievalText").textContent =
-                "Pinapadali ng Tori Dump ang storage at AI-powered retrieval ng mga file.";
-        }
-    }
-/* =TORI DUMP LANGUAGE SWITCHER= */
-const toriLanguages = {
-    en: {
-        heroTitle:
-            "Tori Dump",
-        heroSubtitle:
-            "How to Use Tori Dump",
-        heroDescription:
-            "A practical guide to smarter file management, organization, and AI-powered retrieval.",
-        /* WHAT IS TORI DUMP */
-        whatTitle:
-            "What is Tori Dump?",
-        whatIntro:
-            "Tori Dump is a core feature of the Tori Workspace that automates file management.",
-        organizeTitle:
-            "Automated File Management",
-        organizeText:
-            "Tori Dump organizes, routes, and indexes uploaded files and stores them in project directories.",
-        retrievalTitle:
-            "AI-Powered Retrieval",
-        retrievalText:
-            "Tori Dump enables efficient storage and AI-powered retrieval of files.",
-        /* WHY TORI DUMP */
-        whyTitle:
-            "Why Use Tori Dump?",
-        whyIntro:
-            "Traditional file storage can make documents difficult to locate when filenames are vague and metadata is overlooked.",
-        problem1Title:
-            "Better File Organization",
-        problem1Text:
-            "Uploaded files can be organized and routed into project directories.",
-        problem2Title:
-            "Smarter Search",
-        problem2Text:
-            "Tori Dump uses metadata and keyword matching to improve file retrieval.",
-        problem3Title:
-            "Faster Retrieval",
-        problem3Text:
-            "AI-powered query parsing supports contextual search and direct record retrieval.",
-        /* FILE NAMING */
-        namingTitle:
-            "Before You Upload: Name Your Files Properly",
-        namingIntro:
-            "Descriptive filenames help Tori Dump identify useful search tokens and improve retrieval.",
-        badNamingTitle:
-            "Avoid Vague Filenames",
-        badNamingText:
-            "Generic filenames provide fewer useful keywords for searching and indexing."
-    },
-    fil: {
-        heroTitle:
-            "Tori Dump",
-        heroSubtitle:
-            "Paano Gamitin ang Tori Dump",
-        heroDescription:
-            "Isang praktikal na gabay sa mas maayos na pamamahala, pag-oorganisa, at AI-powered na paghahanap ng mga file.",
-        /* ANO ANG TORI DUMP */
-        whatTitle:
-            "Ano ang Tori Dump?",
-        whatIntro:
-            "Ang Tori Dump ay isang pangunahing feature ng Tori Workspace na nag-a-automate ng file management.",
-        organizeTitle:
-            "Automated na Pamamahala ng File",
-        organizeText:
-            "Inaayos, nire-route, at ini-index ng Tori Dump ang mga na-upload na file at ini-store ang mga ito sa mga project directory.",
-        retrievalTitle:
-            "AI-Powered na Retrieval",
-        retrievalText:
-            "Pinapadali ng Tori Dump ang storage at AI-powered na retrieval ng mga file.",
-        /* BAKIT GAMITIN ANG TORI DUMP */
-        whyTitle:
-            "Bakit Gamitin ang Tori Dump?",
-        whyIntro:
-            "Maaaring maging mahirap hanapin ang mga dokumento sa traditional file storage kapag malabo ang filenames at hindi ginagamit ang metadata.",
-        problem1Title:
-            "Mas Maayos na File Organization",
-        problem1Text:
-            "Maaaring awtomatikong maorganisa at ma-route ang mga na-upload na file sa mga project directory.",
-        problem2Title:
-            "Mas Matalinong Paghahanap",
-        problem2Text:
-            "Gumagamit ang Tori Dump ng metadata at keyword matching upang mapahusay ang paghahanap ng mga file.",
-        problem3Title:
-            "Mas Mabilis na Retrieval",
-        problem3Text:
-            "Ang AI-powered query parsing ay sumusuporta sa contextual search at direktang retrieval ng mga record.",
-        /* PAGPAPANGALAN NG FILE */
-        namingTitle:
-            "Bago Mag-upload: Pangalanan nang Maayos ang Iyong mga File",
-        namingIntro:
-            "Ang descriptive filenames ay tumutulong sa Tori Dump na matukoy ang mahahalagang search token at mapahusay ang retrieval.",
-        badNamingTitle:
-            "Iwasan ang Malalabong Filename",
-        badNamingText:
-            "Ang generic na filenames ay nagbibigay ng mas kaunting kapaki-pakinabang na keyword para sa paghahanap at indexing."
-    }
-};
-/* =   LANGUAGE SWITCH FUNCTION= */
-function setLanguage(language) {
-    const selectedLanguage = toriLanguages[language];
-    if (!selectedLanguage) {
-        return;
-    }
-    /* HERO */
-    document.getElementById("heroTitle").textContent =
-        selectedLanguage.heroTitle;
-    document.getElementById("heroSubtitle").textContent =
-        selectedLanguage.heroSubtitle;
-    document.getElementById("heroDescription").textContent =
-        selectedLanguage.heroDescription;
-    /* HOW TO USE */
-    document.getElementById("stepsTitle").textContent =
-        selectedLanguage.stepsTitle;
-    document.getElementById("stepsIntro").textContent =
-        selectedLanguage.stepsIntro;
-    document.getElementById("step1Title").textContent =
-        selectedLanguage.step1Title;
-    document.getElementById("step1Text").textContent =
-        selectedLanguage.step1Text;
-    document.getElementById("step2Title").textContent =
-        selectedLanguage.step2Title;
-    document.getElementById("step2Text").textContent =
-        selectedLanguage.step2Text;
-    document.getElementById("step3Title").textContent =
-        selectedLanguage.step3Title;
-    document.getElementById("step3Text").textContent =
-        selectedLanguage.step3Text;
-    document.getElementById("step4Title").textContent =
-        selectedLanguage.step4Title;
-    document.getElementById("step4Text").textContent =
-        selectedLanguage.step4Text;
-    /* HOW TORI DUMP WORKS */
-    document.querySelector(
-        ".section-heading h2"
-    );
-    document.getElementById("worksTitle").textContent =
-        selectedLanguage.worksTitle;
-    document.getElementById("works1Title").textContent =
-        selectedLanguage.works1Title;
-    document.getElementById("works1Text").textContent =
-        selectedLanguage.works1Text;
-    document.getElementById("works2Title").textContent =
-        selectedLanguage.works2Title;
-    document.getElementById("works2Text").textContent =
-        selectedLanguage.works2Text;
-    document.getElementById("works3Title").textContent =
-        selectedLanguage.works3Title;
-    document.getElementById("works3Text").textContent =
-        selectedLanguage.works3Text;
-    /* GOVERNMENT */
-    document.getElementById("governmentTitle").textContent =
-        selectedLanguage.governmentTitle;
-    document.getElementById("governmentIntro").textContent =
-        selectedLanguage.governmentIntro;
-    /* GOVERNMENT CARDS */
-    const governmentCards =
-        document.querySelectorAll(
-            "#governmentTitle"
-        );
-    const governmentSection =
-        document.getElementById(
-            "governmentTitle"
-        ).closest(".section");
-    if (governmentSection) {
-        const cards =
-            governmentSection.querySelectorAll(
-                ".info-card"
-            );
-        if (cards.length >= 3) {
-            cards[0].querySelector("h4").textContent =
-                selectedLanguage.government1Title;
-            cards[0].querySelector("p").textContent =
-                selectedLanguage.government1Text;
-            cards[1].querySelector("h4").textContent =
-                selectedLanguage.government2Title;
-            cards[1].querySelector("p").textContent =
-                selectedLanguage.government2Text;
-            cards[2].querySelector("h4").textContent =
-                selectedLanguage.government3Title;
-            cards[2].querySelector("p").textContent =
-                selectedLanguage.government3Text;
-        }
-        const governmentNote =
-            governmentSection.querySelector(
-                ".government-note"
-            );
-        if (governmentNote) {
-            governmentNote.querySelector("strong").textContent =
-                selectedLanguage.governmentNoteTitle;
-            governmentNote.querySelector("p").textContent =
-                selectedLanguage.governmentNoteText;
-        }
-    }
-    /* FAQ */
-    const faqSection =
-        document.getElementById(
-            "faqAccordion"
-        ).closest(".section");
-    if (faqSection) {
-        const faqTitle =
-            faqSection.querySelector(
-                ".section-title"
-            );
-        if (faqTitle) {
-            faqTitle.textContent =
-                selectedLanguage.faqTitle;
-        }
-        for (let i = 1; i <= 8; i++) {
-            const question =
-                document.querySelector(
-                    `#faq${i}`
-                );
-            if (!question) {
-                continue;
-            }
-            const card =
-                question.closest(".card");
-            if (!card) {
-                continue;
-            }
-            const button =
-                card.querySelector("button");
-            const body =
-                card.querySelector(".card-body");
-            if (button) {
-                button.textContent =
-                    selectedLanguage[
-                        `faq${i}Question`
-                    ];
-            }
-            if (body) {
-                body.textContent =
-                    selectedLanguage[
-                        `faq${i}Answer`
-                    ];
-            }
-        }
-    }
-    /* BUTTON STATE */
-    document.getElementById("englishBtn")
-        .classList.remove("active");
-    document.getElementById("filipinoBtn")
-        .classList.remove("active");
-    if (language === "en") {
-        document.getElementById("englishBtn")
-            .classList.add("active");
-    } else {
-        document.getElementById("filipinoBtn")
-            .classList.add("active");
-    }
-}
-/* =SET LANGUAGE= */
-function setLanguage(language) {
-    const selectedLanguage = toriLanguages[language];
-    if (!selectedLanguage) {
-        return;
-    }
-    /* HERO */
-    document.getElementById("heroTitle").textContent =
-        selectedLanguage.heroTitle;
-    document.getElementById("heroSubtitle").textContent =
-        selectedLanguage.heroSubtitle;
-    document.getElementById("heroDescription").textContent =
-        selectedLanguage.heroDescription;
-    /* WHAT IS TORI DUMP */
-    document.getElementById("whatTitle").textContent =
-        selectedLanguage.whatTitle;
-    document.getElementById("whatIntro").textContent =
-        selectedLanguage.whatIntro;
-    document.getElementById("organizeTitle").textContent =
-        selectedLanguage.organizeTitle;
-    document.getElementById("organizeText").textContent =
-        selectedLanguage.organizeText;
-    document.getElementById("retrievalTitle").textContent =
-        selectedLanguage.retrievalTitle;
-    document.getElementById("retrievalText").textContent =
-        selectedLanguage.retrievalText;
-    /* WHY TORI DUMP */
-    document.getElementById("whyTitle").textContent =
-        selectedLanguage.whyTitle;
-    document.getElementById("whyIntro").textContent =
-        selectedLanguage.whyIntro;
-    document.getElementById("problem1Title").textContent =
-        selectedLanguage.problem1Title;
-    document.getElementById("problem1Text").textContent =
-        selectedLanguage.problem1Text;
-    document.getElementById("problem2Title").textContent =
-        selectedLanguage.problem2Title;
-    document.getElementById("problem2Text").textContent =
-        selectedLanguage.problem2Text;
-    document.getElementById("problem3Title").textContent =
-        selectedLanguage.problem3Title;
-    document.getElementById("problem3Text").textContent =
-        selectedLanguage.problem3Text;
-    /* FILE NAMING */
-    document.getElementById("namingTitle").textContent =
-        selectedLanguage.namingTitle;
-    document.getElementById("namingIntro").textContent =
-        selectedLanguage.namingIntro;
-    document.getElementById("badNamingTitle").textContent =
-        selectedLanguage.badNamingTitle;
-    document.getElementById("badNamingText").textContent =
-        selectedLanguage.badNamingText;
-    /* BUTTON STATE */
-    document.getElementById("englishBtn")
-        .classList.remove("active");
-    document.getElementById("filipinoBtn")
-        .classList.remove("active");
-    if (language === "en") {
-        document.getElementById("englishBtn")
-            .classList.add("active");
-    } else if (language === "fil") {
-        document.getElementById("filipinoBtn")
-            .classList.add("active");
-    }
-}
+<!-- =JAVASCRIPT LIBRARIES= -->
+<script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
 </script>
-<!-- Bootstrap JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js">
+</script>
+<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+</script>
+<!-- =TORI KNOWLEDGE BASE= -->
+<script src="knowledge.js"></script>
+<!-- =TORI GUIDE JAVASCRIPT= -->
+<script>
+    /* =LANGUAGE SYSTEM= */
+    let currentLanguage = "en";
+
+    function setLanguage(language) {
+        currentLanguage = language;
+        document.documentElement.lang =
+            language === "fil"
+                ? "fil"
+                : "en";
+        /* -Translate all elements with data-en/data-fil- */
+        const translatableElements =
+            document.querySelectorAll(
+                "[data-en][data-fil]"
+            );
+        translatableElements.forEach(function(element) {
+            const translation =
+                element.getAttribute(
+                    language === "fil"
+                        ? "data-fil"
+                        : "data-en"
+                );
+            if (translation !== null) {
+                element.textContent =
+                    translation;
+            }
+        });
+        /* -Update language buttons- */
+        document
+            .querySelectorAll(".language-btn")
+            .forEach(function(button) {
+
+                button.classList.remove("active");
+
+            });
+        const activeButton =
+            document.querySelector(
+                `.language-btn[data-language="${language}"]`
+            );
+        if (activeButton) {
+            activeButton.classList.add("active");
+        }
+        /* -Search placeholder- */
+        const searchInput =
+            document.getElementById(
+                "toriSearchInput"
+            );
+        if (searchInput) {
+            searchInput.placeholder =
+                language === "fil"
+                    ? "Magtanong tungkol sa Tori Dump..."
+                    : "Ask a question about Tori Dump...";
+
+        }
+        /* -Search aria label- */
+        if (searchInput) {
+            searchInput.setAttribute(
+                "aria-label",
+                language === "fil"
+                    ? "Magtanong tungkol sa Tori Dump"
+                    : "Ask a question about Tori Dump"
+            );
+        }
+        /* -Save language preference- */
+        try {
+            localStorage.setItem(
+                "toriGuideLanguage",
+                language
+            );
+        } catch (error) {
+            /* Ignore storage errors */
+        }
+    }
+    /* =LANGUAGE BUTTONS= */
+    document
+        .querySelectorAll(".language-btn")
+        .forEach(function(button) {
+            button.addEventListener(
+                "click",
+                function() {
+                    setLanguage(
+                        button.getAttribute(
+                            "data-language"
+                        )
+                    );
+                }
+            );
+        });
+    /* =SUGGESTION BUTTONS= */
+    const searchInput =
+        document.getElementById(
+            "toriSearchInput"
+        );
+    const suggestionButtons =
+        document.querySelectorAll(
+            ".suggestion-btn"
+        );
+    suggestionButtons.forEach(
+        function(button) {
+            button.addEventListener(
+                "click",
+                function() {
+                    const question =
+                        button.getAttribute(
+                            "data-question"
+                        );
+                    searchInput.value =
+                        question;
+                    searchInput.focus();
+                }
+            );
+        }
+    );
+    /* =SEARCH FORM= */
+    const searchForm =
+        document.getElementById(
+            "toriSearchForm"
+        );
+    const searchResult =
+        document.getElementById(
+            "toriSearchResult"
+        );
+    searchForm.addEventListener(
+        "submit",
+        function(event) {
+            event.preventDefault();
+            const question =
+                searchInput.value.trim();
+            if (!question) {
+                searchInput.focus();
+                return;
+            }
+            /* -THINKING STATE- */
+            searchResult.innerHTML = `
+                <div class="tori-answer">
+                    <div class="tori-answer-label">
+                        TORI
+                    </div>
+                    <p class="mb-0 text-muted">
+                        ${
+                            currentLanguage === "fil"
+                                ? "Hinahanap sa knowledge base..."
+                                : "Searching my knowledge..."
+                        }
+                    </p>
+                </div>
+            `;
+            /* -SMALL DELAY- */
+            setTimeout(
+                function() {
+                    const result =
+                        generateToriAnswer(
+                            question
+                        );
+                    /* -NO RESULT- */
+                    if (!result.found) {
+                        searchResult.innerHTML = `
+                            <div class="tori-answer">
+                                <div class="tori-answer-label">
+                                    TORI
+                                </div>
+                                <p>
+                                    ${result.answer}
+                                </p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    /* -SOURCES- */
+                    const sources =
+                        result.sources
+                            .map(
+                                function(source) {
+                                    return `
+                                        <li>
+                                            ${source}
+                                        </li>
+                                    `;
+                                }
+                            )
+                            .join("");
+                    /* -RESULT- */
+                    searchResult.innerHTML = `
+                        <div class="tori-answer">
+                            <div class="tori-answer-label">
+                                TORI
+                            </div>
+                            <div>
+                                ${formatToriAnswer(
+                                    result.answer
+                                )}
+                            </div>
+                            <hr>
+                            <small class="text-muted">
+                                <strong>
+                                    ${
+                                        currentLanguage === "fil"
+                                            ? "Knowledge sources:"
+                                            : "Knowledge sources:"
+                                    }
+                                </strong>
+                            </small>
+                            <ul class="mb-0 mt-1">
+                                ${sources}
+                            </ul>
+                        </div>
+                    `;
+                },
+                400
+            );
+        }
+    );
+    /* =FORMAT TORI ANSWER= */
+    function formatToriAnswer(text) {
+        return text
+            .trim()
+            .replace(
+                /\n\n/g,
+                "<br><br>"
+            )
+            .replace(
+                /\n/g,
+                "<br>"
+            );
+    }
+    /* =LOAD SAVED LANGUAGE= */
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+            let savedLanguage = "en";
+            try {
+                savedLanguage =
+                    localStorage.getItem(
+                        "toriGuideLanguage"
+                    ) || "en";
+            } catch (error) {
+                savedLanguage = "en";
+            }
+            setLanguage(
+                savedLanguage
+            );
+        }
+    );
+</script>
 </body>
 </html>
