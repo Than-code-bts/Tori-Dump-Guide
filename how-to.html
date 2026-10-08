@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tori Dump | How to Use</title>
+    <!-- Bootstrap 4 -->
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    >
+    <style>
+        /* =TORI DUMP GUIDE - Base Styles= */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #243447;
+            line-height: 1.7;
+        }
+        .hero {
+            background: #ffffff;
+            padding: 70px 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .hero h1 {
+            font-weight: 700;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #5f6b7a;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.35rem !important;
+            font-weight: 600;
+            margin-bottom: 10px !important;
+            color: #344054 !important;
+        }
+        
+        .language-switcher .btn {
+            margin-left: 5px;
+        }
+        
+        .language-switcher .active {
+            background: #343a40;
+            color: #ffffff;
+        }
+        .section {
+            padding: 60px 20px;
+        }
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .section-intro {
+            color: #667085;
+            max-width: 750px;
+            margin-bottom: 35px;
+        }
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            height: 100%;
+        }
+        .step-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid #e5e7eb;
+        }
+        .step-number {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .file-example {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: monospace;
+            word-break: break-word;
+        }
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            padding: 30px 20px;
+            text-align: center;
+            color: #667085;
+        }
+        /* Language switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .language-switcher {
+                position: static;
+                margin-bottom: 25px;
+            }
+        }
+        /* =TORI DUMP WORKFLOW= */
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+        .section-heading h2 {
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-heading p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #667085;
+        }
+        .section-light {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        .step-card {
+            height: 100%;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 30px;
+            display: flex;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+        }
+        .step-number {
+            min-width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #343a40;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-right: 22px;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-content h4 {
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .step-content p {
+            color: #667085;
+            line-height: 1.7;
+        }
+        .step-example,
+        .step-highlight {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        .step-example strong,
+        .step-highlight strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+        .step-example div {
+            font-size: 0.85rem;
+            margin-top: 6px;
+            word-break: break-word;
+        }
+        .bad-example {
+            color: #6b7280;
+        }
+        .good-example {
+            color: #343a40;
+            font-weight: 600;
+        }
+        .step-highlight p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 767px) {
+            .section-light {
+                padding: 60px 0;
+            }
+            .step-card {
+                padding: 24px;
+            }
+            .step-number {
+                min-width: 44px;
+                height: 44px;
+                margin-right: 15px;
+            }
+        }
+        /* =HOW TORI DUMP WORK= */
+        .info-card {
+            height: 100%;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+        }
+        .info-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #343a40;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .info-card h4 {
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .info-card p {
+            color: #667085;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        /* =GOVERNMENT USE CASES= */
+        .use-case-note {
+            display: block;
+            margin-top: 18px;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #6b7280;
+            line-height: 1.5;
+        }        
+        .government-note {
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 22px 25px;
+            background: #f8f9fa;
+            border-left: 4px solid #343a40;
+            border-radius: 8px;
+        }        
+        .government-note strong {
+            display: block;
+            margin-bottom: 6px;
+        }        
+        .government-note p {
+            margin-bottom: 0;
+            color: #667085;
+            line-height: 1.7;
+        }
+        /* = FAQ = */
+        #faqAccordion .card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #faqAccordion .card-header {
+            background: #ffffff;
+            border-bottom: none;
+            padding: 0;
+        }        
+        #faqAccordion .btn-link {
+            width: 100%;
+            text-align: left;
+            padding: 18px 20px;
+            color: #343a40;
+            font-weight: 600;
+            text-decoration: none;
+        }        
+        #faqAccordion .btn-link:hover {
+            color: #000000;
+            text-decoration: none;
+        }        
+        #faqAccordion .card-body {
+            padding: 0 20px 20px 20px;
+            color: #667085;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+<!-- =HERO= -->
+<header class="hero text-center">
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <button
+                class="btn btn-sm btn-outline-secondary active"
+                onclick="setLanguage('en')"
+                id="englishBtn"
+            >
+                English
+            </button>
+            <button
+                class="btn btn-sm btn-outline-secondary"
+                onclick="setLanguage('fil')"
+                id="filipinoBtn"
+            >
+                Filipino
+            </button>
+        </div>
+        <div class="hero-content">
+            <div class="hero-label">
+                TORI WORKSPACE
+            </div>
+            <h1 id="heroTitle">
+                Tori Dump
+            </h1>
+            <p class="hero-subtitle" id="heroSubtitle">
+                How to Use Tori Dump
+            </p>
+            <p id="heroDescription">
+                A practical guide to smarter file management,
+                organization, and AI-powered retrieval.
+            </p>
+        </div>
+    </div>
+</header>
+<!-- =WHAT IS TORI DUMP?= -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" id="whatTitle">
+            What is Tori Dump?
+        </h2>
+        <p class="section-intro" id="whatIntro">
+            Tori Dump is a core feature of the Tori Workspace
+            that automates file management.
+        </p>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="info-card">
+                    <h4 id="organizeTitle">
+                        Automated File Management
+                    </h4>
+                    <p id="organizeText">
+                        Tori Dump organizes, routes, and indexes
+                        uploaded files and stores them in project
+                        directories.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="info-card">
+                    <h4 id="retrievalTitle">
+                        AI-Powered Retrieval
+                    </h4>
+                    <p id="retrievalText">
+                        Tori Dump enables efficient storage and
+                        AI-powered retrieval of files.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =WHY TORI DUMP?= -->
+<section class="section bg-white">
+    <div class="container">
+        <h2 class="section-title" id="whyTitle">
+            Why Use Tori Dump?
+        </h2>
+        <p class="section-intro" id="whyIntro">
+            Traditional file storage can make documents difficult
+            to locate when filenames are vague and metadata is
+            overlooked.
+        </p>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <h4 id="problem1Title">
+                        Better File Organization
+                    </h4>
+                    <p id="problem1Text">
+                        Uploaded files can be organized and routed
+                        into project directories.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <h4 id="problem2Title">
+                        Smarter Search
+                    </h4>
+                    <p id="problem2Text">
+                        Tori Dump uses metadata and keyword matching
+                        to improve file retrieval.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <h4 id="problem3Title">
+                        Faster Retrieval
+                    </h4>
+                    <p id="problem3Text">
+                        AI-powered query parsing supports contextual
+                        search and direct record retrieval.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =BEFORE YOU UPLOAD= -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" id="namingTitle">
+            Before You Upload: Name Your Files Properly
+        </h2>
+        <p class="section-intro" id="namingIntro">
+            Descriptive filenames help Tori Dump identify useful
+            search tokens and improve retrieval.
+        </p>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="info-card">
+                    <h4 id="badNamingTitle">
+                        Avoid Vague Filenames
+                    </h4>
+                    <div class="file-example mb-3">
+                        receipt.pdf<br>
+                        report.xlsx<br>
+                        tax_v2.pdf
+                    </div>
+                    <p id="badNamingText">
+                        Generic filenames provide fewer useful
+                        keywords for searching and indexing.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="info-card">
+                    <h4 id="goodNamingTitle">
+                        Use Specific, Descriptive Names
+                    </h4>
+                    <div class="file-example mb-3">
+                        tax_and_compliance_q3_2026_BIR_VAT_Return_Filing_Receipt.pdf
+                    </div>
+                    <p id="goodNamingText">
+                        Include meaningful keywords such as the
+                        subject, period, year, agency, document type,
+                        or other useful identifiers.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="step-card">
+            <h4 id="folderRuleTitle">
+                Golden Rule: Match File Names to Folder Names
+            </h4>
+            <p id="folderRuleText">
+                Matching meaningful terms in the filename with the
+                target folder can support automated routing.
+            </p>
+            <strong>Folder:</strong>
+            <div class="file-example mt-2 mb-3">
+                Tax_and_Compliance
+            </div>
+            <strong>File:</strong>
+            <div class="file-example mt-2">
+                tax_and_compliance_q3_2026_BIR_VAT_Return_Filing_Receipt.pdf
+            </div>
+        </div>
+    </div>
+</section>
+<section id="steps" class="section-light">
+    <div class="container">
+        <div class="section-heading text-center">
+            <span class="section-label">
+                WORKFLOW
+            </span>
+            <h2 id="stepsTitle">
+                How to Use Tori Dump
+            </h2>
+            <p id="stepsIntro">
+                Follow these four steps to organize, upload, and retrieve
+                files efficiently.
+            </p>
+        </div>
+        <div class="row mt-5">
+            <!-- STEP 1 -->
+            <div class="col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-number">
+                        01
+                    </div>
+                    <div class="step-content">
+                        <h4 id="step1Title">
+                            Prepare Your Files
+                        </h4>
+                        <p id="step1Text">
+                            Use clear and descriptive file names before
+                            uploading your documents. Include important
+                            keywords such as the document type, period,
+                            year, office, or transaction.
+                        </p>
+                        <div class="step-example">
+                            <strong>Example</strong>
+                            <div class="bad-example">
+                                ❌ receipt.pdf
+                            </div>
+                            <div class="good-example">
+                                ✓ tax_and_compliance_q3_2026_BIR_VAT_Return_Filing_Receipt.pdf
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- STEP 2 -->
+            <div class="col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-number">
+                        02
+                    </div>
+                    <div class="step-content">
+                        <h4 id="step2Title">
+                            Set Up Your Workspace
+                        </h4>
+                        <p id="step2Text">
+                            Use your Tori Workspace and its project
+                            directories to provide the appropriate
+                            context for your files. This helps Tori
+                            understand where files belong.
+                        </p>
+                        <div class="step-highlight">
+                            <strong>Why this matters</strong>
+                            <p>
+                                Tori uses file names and workspace context
+                                to support automated file routing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- STEP 3 -->
+            <div class="col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-number">
+                        03
+                    </div>
+                    <div class="step-content">
+                        <h4 id="step3Title">
+                            Upload Your Files
+                        </h4>
+                        <p id="step3Text">
+                            Drag and drop your files into Tori Dump.
+                            Batch uploading triggers the active ingestion
+                            process, allowing uploaded files to be
+                            organized and indexed.
+                        </p>
+                        <div class="step-highlight">
+                            <strong>Automation</strong>
+                            <p>
+                                Tori Dump helps reduce manual file
+                                organization by automatically routing
+                                files to appropriate project directories.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- STEP 4 -->
+            <div class="col-md-6 mb-4">
+                <div class="step-card">
+                    <div class="step-number">
+                        04
+                    </div>
+                    <div class="step-content">
+                        <h4 id="step4Title">
+                            Search and Retrieve
+                        </h4>
+                        <p id="step4Text">
+                            Search for documents using meaningful keywords
+                            or contextual queries. Tori's retrieval system
+                            uses metadata and fuzzy matching to help locate
+                            relevant files.
+                        </p>
+                        <div class="step-highlight">
+                            <strong>AI-powered retrieval</strong>
+                            <p>
+                                Even when a search contains short names
+                                or minor typing errors, fuzzy token
+                                matching can help identify the relevant
+                                file.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =HOW TORI DUMP WORKS= -->
+<section class="section bg-white">
+    <div class="container">
+        <h2 class="section-title">
+            How Tori Dump Works
+        </h2>
+        <p class="section-intro">
+            Tori Dump combines automated file organization,
+            metadata extraction, and AI-powered retrieval to
+            make files easier to manage and find.
+        </p>
+        <div class="row mt-5">
+            <!-- AUTOMATED ORGANIZATION -->
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        01
+                    </div>
+                    <h4>
+                        Automated Organization
+                    </h4>
+                    <p>
+                        Tori Dump organizes and routes uploaded files
+                        into project directories based on file names
+                        and workspace context.
+                    </p>
+                </div>
+            </div>
+            <!-- METADATA -->
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        02
+                    </div>
+                    <h4>
+                        Metadata Extraction
+                    </h4>
+                    <p>
+                        The system extracts useful information such as
+                        author, title, and timestamps and uses this
+                        information as part of the file's metadata.
+                    </p>
+                </div>
+            </div>
+            <!-- AI RETRIEVAL -->
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        03
+                    </div>
+                    <h4>
+                        AI-Powered Retrieval
+                    </h4>
+                    <p>
+                        Tori Dump uses fuzzy token matching to help
+                        identify relevant files, even when a search
+                        contains short names or minor typing errors.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =GOVERNMENT USE CASES= -->
+<section class="section bg-white">
+    <div class="container">
+        <h2 class="section-title" id="governmentTitle">
+            Tori Dump for Government Work
+        </h2>
+        <p class="section-intro" id="governmentIntro">
+            Tori Dump can support government information and
+            records management workflows where organized files,
+            efficient retrieval, and reliable records access are important.
+        </p>
+        <div class="row">
+            <!-- DRRM -->
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        01
+                    </div>
+                    <h4>
+                        DRRM Information
+                    </h4>
+                    <p>
+                        Support centralized disaster risk reduction
+                        and management information systems and enable
+                        faster retrieval and sharing of relevant records
+                        during crisis situations.
+                    </p>
+                    <span class="use-case-note">
+                        Disaster preparedness • Response • Information sharing
+                    </span>
+                </div>
+            </div>
+            <!-- RECORDS -->
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        02
+                    </div>
+                    <h4>
+                        Records Management
+                    </h4>
+                    <p>
+                        Maintain organized records and support a
+                        traceable records trail for operational,
+                        monitoring, and audit-related purposes.
+                    </p>
+                    <span class="use-case-note">
+                        Records trail • Retrieval • Accountability
+                    </span>
+                </div>
+            </div>
+            <!-- OPERATIONS -->
+            <div class="col-md-4 mb-4">
+                <div class="info-card">
+                    <div class="info-icon">
+                        03
+                    </div>
+                    <h4>
+                        Government Operations
+                    </h4>
+                    <p>
+                        Help improve operational efficiency,
+                        accountability, transparency, and continuity
+                        of government services through effective
+                        records management.
+                    </p>
+                    <span class="use-case-note">
+                        Efficiency • Transparency • Continuity
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- GOVERNMENT NOTE -->
+        <div class="government-note mt-4">
+            <strong>
+                Why this matters
+            </strong>
+            <p>
+                For government offices, organized and accessible
+                information can support faster decision-making,
+                accountability, and continuity of services.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- =QUICK TIPS= -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" id="tipsTitle">
+            Quick Tips
+        </h2>
+        <div class="info-card">
+            <ul id="tipsList">
+                <li>Use specific and descriptive filenames.</li>
+                <li>Include meaningful keywords in filenames.</li>
+                <li>Match filename terms with folder names.</li>
+                <li>Use batch uploads when appropriate.</li>
+                <li>Use meaningful queries when searching for records.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- =FAQ= -->
+<section class="section bg-white">
+    <div class="container">
+        <h2 class="section-title">
+            Frequently Asked Questions
+        </h2>
+        <div id="faqAccordion">
+            <!-- FAQ 1 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq1"
+                    >
+                        What is Tori Dump?
+                    </button>
+                </div>
+                <div
+                    id="faq1"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        Tori Dump is an automated file management
+                        system that organizes, routes, indexes,
+                        and stores uploaded files while enabling
+                        AI-powered retrieval.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq2"
+                    >
+                        Why should I use descriptive filenames?
+                    </button>
+                </div>
+                <div
+                    id="faq2"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        Descriptive filenames provide high-signal
+                        keywords that can help with automated routing
+                        and file retrieval. Include useful details such
+                        as the document type, period, year, office,
+                        or transaction.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq3"
+                    >
+                        Can I upload multiple files?
+                    </button>
+                </div>
+                <div
+                    id="faq3"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        Yes. The Tori Dump workflow supports batch
+                        drag-and-drop uploads, which trigger the
+                        active ingestion process.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq4"
+                    >
+                        How does Tori Dump organize my files?
+                    </button>
+                </div>
+                <div
+                    id="faq4"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        File names and workspace context help support
+                        automated routing to appropriate project
+                        directories. Matching file tokens to folder
+                        names can improve routing confidence.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 5 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq5"
+                    >
+                        How does AI-powered retrieval work?
+                    </button>
+                </div>
+                <div
+                    id="faq5"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        Tori Dump uses metadata and fuzzy token
+                        matching to identify relevant files. This
+                        can help retrieve files even when a search
+                        uses a short name or contains minor typing
+                        errors.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 6 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq6"
+                    >
+                        What information can be used as metadata?
+                    </button>
+                </div>
+                <div
+                    id="faq6"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        The Tori Dump material identifies information
+                        such as author, title, and timestamps as
+                        metadata that can be extracted from files.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 7 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq7"
+                    >
+                        What if I make a typo when searching?
+                    </button>
+                </div>
+                <div
+                    id="faq7"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        Fuzzy token matching can help identify relevant
+                        files even when search terms contain minor
+                        typing errors.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 8 -->
+            <div class="card mb-2">
+                <div class="card-header">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#faq8"
+                    >
+                        Can Tori Dump support government work?
+                    </button>
+                </div>
+                <div
+                    id="faq8"
+                    class="collapse"
+                    data-parent="#faqAccordion"
+                >
+                    <div class="card-body">
+                        Tori Dump can support government information
+                        and records management workflows, including
+                        DRRM information management, records trails,
+                        information retrieval, accountability,
+                        transparency, and continuity of government
+                        services.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =FOOTER= -->
+<footer class="footer">
+    <div class="container">
+        <p class="mb-0">
+            Tori Dump — How to Use Guide
+        </p>
+    </div>
+</footer>
+<!-- =JAVASCRIPT= -->
+<script>
+    function setLanguage(language) {
+        if (language === "en") {
+            document.documentElement.lang = "en";
+            document.getElementById("heroSubtitle").textContent =
+                "How to Use Tori Dump";
+            document.getElementById("heroDescription").textContent =
+                "A practical guide to smarter file management, organization, and AI-powered retrieval.";
+            document.getElementById("whatTitle").textContent =
+                "What is Tori Dump?";
+            document.getElementById("whatIntro").textContent =
+                "Tori Dump is a core feature of the Tori Workspace that automates file management.";
+            document.getElementById("organizeTitle").textContent =
+                "Automated File Management";
+            document.getElementById("organizeText").textContent =
+                "Tori Dump organizes, routes, and indexes uploaded files and stores them in project directories.";
+            document.getElementById("retrievalTitle").textContent =
+                "AI-Powered Retrieval";
+            document.getElementById("retrievalText").textContent =
+                "Tori Dump enables efficient storage and AI-powered retrieval of files.";
+        }
+        if (language === "fil") {
+            document.documentElement.lang = "fil";
+            document.getElementById("heroSubtitle").textContent =
+                "Paano Gamitin ang Tori Dump";
+            document.getElementById("heroDescription").textContent =
+                "Isang praktikal na gabay para sa mas maayos na pamamahala, pag-oorganisa, at AI-powered na paghahanap ng mga file.";
+            document.getElementById("whatTitle").textContent =
+                "Ano ang Tori Dump?";
+            document.getElementById("whatIntro").textContent =
+                "Ang Tori Dump ay isang pangunahing feature ng Tori Workspace na nag-o-automate ng file management.";
+            document.getElementById("organizeTitle").textContent =
+                "Automated na File Management";
+            document.getElementById("organizeText").textContent =
+                "Inaayos, niruruta, at ini-index ng Tori Dump ang mga na-upload na file at inilalagay ang mga ito sa project directories.";
+            document.getElementById("retrievalTitle").textContent =
+                "AI-Powered na Retrieval";
+            document.getElementById("retrievalText").textContent =
+                "Pinapadali ng Tori Dump ang storage at AI-powered retrieval ng mga file.";
+        }
+    }
+/* ==========================================
+   TORI DUMP LANGUAGE SWITCHER
+   ========================================== */
+
+const toriLanguages = {
+
+    en: {
+
+        heroTitle: "Tori Dump",
+
+        heroSubtitle: "How to Use Tori Dump",
+
+        heroDescription:
+            "A practical guide to smarter file management, organization, and AI-powered retrieval.",
+
+        stepsTitle:
+            "How to Use Tori Dump",
+
+        stepsIntro:
+            "Follow these four steps to organize, upload, and retrieve files efficiently.",
+
+        step1Title:
+            "Prepare Your Files",
+
+        step1Text:
+            "Use clear and descriptive file names before uploading your documents. Include important keywords such as the document type, period, year, office, or transaction.",
+
+        step2Title:
+            "Set Up Your Workspace",
+
+        step2Text:
+            "Use your Tori Workspace and its project directories to provide the appropriate context for your files. This helps Tori understand where files belong.",
+
+        step3Title:
+            "Upload Your Files",
+
+        step3Text:
+            "Drag and drop your files into Tori Dump. Batch uploading triggers the active ingestion process, allowing uploaded files to be organized and indexed.",
+
+        step4Title:
+            "Search and Retrieve",
+
+        step4Text:
+            "Search for documents using meaningful keywords or contextual queries. Tori's retrieval system uses metadata and fuzzy matching to help locate relevant files.",
+
+        governmentTitle:
+            "Tori Dump for Government Work",
+
+        governmentIntro:
+            "Tori Dump can support government information and records management workflows where organized files, efficient retrieval, and reliable records access are important."
+
+    },
+
+    fil: {
+
+        heroTitle: "Tori Dump",
+
+        heroSubtitle:
+            "Paano Gamitin ang Tori Dump",
+
+        heroDescription:
+            "Isang praktikal na gabay sa mas maayos na pamamahala, pag-oorganisa, at AI-powered na paghahanap ng mga file.",
+
+        stepsTitle:
+            "Paano Gamitin ang Tori Dump",
+
+        stepsIntro:
+            "Sundin ang apat na hakbang na ito upang maayos na maorganisa, ma-upload, at madaling mahanap ang iyong mga file.",
+
+        step1Title:
+            "Ihanda ang Iyong mga File",
+
+        step1Text:
+            "Gumamit ng malinaw at detalyadong pangalan ng file bago i-upload ang iyong mga dokumento. Isama ang mahahalagang keyword tulad ng uri ng dokumento, panahon, taon, opisina, o transaksyon.",
+
+        step2Title:
+            "I-set Up ang Iyong Workspace",
+
+        step2Text:
+            "Gamitin ang iyong Tori Workspace at mga project directory upang magbigay ng tamang konteksto para sa iyong mga file. Nakakatulong ito sa Tori na matukoy kung saan dapat mapunta ang mga file.",
+
+        step3Title:
+            "I-upload ang Iyong mga File",
+
+        step3Text:
+            "I-drag at i-drop ang iyong mga file sa Tori Dump. Ang batch uploading ay nagti-trigger ng active ingestion process upang maorganisa at ma-index ang mga na-upload na file.",
+
+        step4Title:
+            "Maghanap at Mag-retrieve",
+
+        step4Text:
+            "Maghanap ng mga dokumento gamit ang makabuluhang keyword o contextual query. Gumagamit ang retrieval system ng Tori ng metadata at fuzzy matching upang makatulong sa paghahanap ng mga kaugnay na file.",
+
+        governmentTitle:
+            "Tori Dump para sa Gawain ng Pamahalaan",
+
+        governmentIntro:
+            "Maaaring suportahan ng Tori Dump ang information at records management workflows ng mga tanggapan ng pamahalaan kung saan mahalaga ang organisadong file, mahusay na retrieval, at maaasahang access sa records."
+
+    }
+
+};
+/* =SET LANGUAGE= */
+function setLanguage(language) {
+    const selectedLanguage = toriLanguages[language];
+    if (!selectedLanguage) {
+        return;
+    }
+    /* HERO */
+    document.getElementById("heroTitle").textContent =
+        selectedLanguage.heroTitle;
+    document.getElementById("heroSubtitle").textContent =
+        selectedLanguage.heroSubtitle;
+    document.getElementById("heroDescription").textContent =
+        selectedLanguage.heroDescription;
+    /* HOW TO USE */
+    document.getElementById("stepsTitle").textContent =
+        selectedLanguage.stepsTitle;
+    document.getElementById("stepsIntro").textContent =
+        selectedLanguage.stepsIntro;
+    document.getElementById("step1Title").textContent =
+        selectedLanguage.step1Title;
+    document.getElementById("step1Text").textContent =
+        selectedLanguage.step1Text;
+    document.getElementById("step2Title").textContent =
+        selectedLanguage.step2Title;
+    document.getElementById("step2Text").textContent =
+        selectedLanguage.step2Text;
+    document.getElementById("step3Title").textContent =
+        selectedLanguage.step3Title;
+    document.getElementById("step3Text").textContent =
+        selectedLanguage.step3Text;
+    document.getElementById("step4Title").textContent =
+        selectedLanguage.step4Title;
+    document.getElementById("step4Text").textContent =
+        selectedLanguage.step4Text;
+    /* GOVERNMENT */
+    document.getElementById("governmentTitle").textContent =
+        selectedLanguage.governmentTitle;
+    document.getElementById("governmentIntro").textContent =
+        selectedLanguage.governmentIntro;
+    /* BUTTON STATE */
+    document.getElementById("englishBtn")
+        .classList.remove("active");
+    document.getElementById("filipinoBtn")
+        .classList.remove("active");
+    if (language === "en") {
+        document.getElementById("englishBtn")
+            .classList.add("active");
+    }
+    if (language === "fil") {
+        document.getElementById("filipinoBtn")
+            .classList.add("active");
+    }
+
+}
+</script>
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
