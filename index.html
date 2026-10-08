@@ -1066,10 +1066,60 @@ document.addEventListener("DOMContentLoaded", () => {
         // Automatically scroll to newest message
         chatContainer.scrollTop = chatContainer.scrollHeight;
         return messageElement;}
+    // = TORI CONVERSATION CONTEXT = //
+    let toriConversation = {
+        history: [],
+        lastQuestion: "",
+        lastTopic: "",
+        lastSources: []
+    };
+    // = TORI CONTEXT HELPER = //
+    function updateToriContext(question, result) {
+        toriConversation.lastQuestion = question;
+        if (result && result.sources && result.sources.length > 0) {
+            toriConversation.lastSources = result.sources;
+            toriConversation.lastTopic = result.sources[0];}
+        toriConversation.history.push({
+            user: question,
+            topic: toriConversation.lastTopic,
+            sources: result && result.sources
+                ? result.sources
+                : []
+        });
+        // - Keep only the most recent 10 exchanges - //
+        if (toriConversation.history.length > 10) {
+            toriConversation.history.shift();
+        }
+    }
+    // = TORI CONVERSATION CONTEXT = //
+    let toriConversation = {
+        history: [],
+        lastQuestion: "",
+        lastTopic: "",
+        lastSources: []
+    };
+    // = TORI CONTEXT HELPER = //
+    function updateToriContext(question, result) {
+        toriConversation.lastQuestion = question;
+        if (result && result.sources && result.sources.length > 0) {
+            toriConversation.lastSources = result.sources;
+            toriConversation.lastTopic = result.sources[0];}
+        toriConversation.history.push({
+            user: question,
+            topic: toriConversation.lastTopic,
+            sources: result && result.sources
+                ? result.sources
+                : []
+        });
+        // Keep only the most recent 10 exchanges
+        if (toriConversation.history.length > 10) {
+            toriConversation.history.shift();
+        }
+    }
     // -TORI KNOWLEDGE RESPONSE ENGINE-//
     function getToriResponse(message) {
         const input = message.toLowerCase().trim();
-        // -BASIC GREETINGS -//
+        // = BASIC GREETINGS = //
         if (
             input === "hi" ||
             input === "hello" ||
@@ -1079,28 +1129,52 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
             return "Hello! I'm TORI. How can I help you?";
         }
-        // -CLEAR CHAT- //
+        // =CLEAR CHAT=//
         if (
             input === "clear" ||
             input === "clear chat"
         ) {
             clearChat();
-            return "";}
-        // -SEARCH TORI KNOWLEDGE BASE- //
-        const result = generateToriAnswer(message);
-        // -NO KNOWLEDGE FOUND-//
+            // -Reset TORI's conversation context- //
+            toriConversation = {
+                history: [],
+                lastQuestion: "",
+                lastTopic: "",
+                lastSources: []
+            };
+            return "";
+        }
+        // =DETECT FOLLOW-UP QUESTION= //
+        const isFollowUp = isToriFollowUp(message);
+        // =SEARCH TORI KNOWLEDGE BASE= //
+        let searchQuery = message;
+        // If this is a follow-up and TORI has a previous topic, include that topic in the search query. //
+        if (
+            isFollowUp &&
+            toriConversation.lastTopic
+        ) {
+            searchQuery =
+                toriConversation.lastTopic + " " + message;
+        }
+        const result = generateToriAnswer(searchQuery);
+        // =NO KNOWLEDGE FOUND= //
         if (!result.found) {
-            return result.answer;}
-        // -RETURN KNOWLEDGE ANSWER- //
+            updateToriContext(message, result);
+            return result.answer;
+        }
+        // =UPDATE CONVERSATION CONTEXT= //
+        updateToriContext(message, result);
+        // =RETURN KNOWLEDGE ANSWER= //
         let response = result.answer;
-        // Add knowledge sources
+        // -Add knowledge sources- //
         if (
             result.sources &&
             result.sources.length > 0
         ) {
             response +=
                 "\n\nKnowledge sources: " +
-                result.sources.join(", ");}
+                result.sources.join(", ");
+        }
         return response;
     }
     // -CLEAR CHAT -// 
@@ -1131,8 +1205,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
-
 <script src="knowledge.js"></script>
-
 </body>
 </html>
